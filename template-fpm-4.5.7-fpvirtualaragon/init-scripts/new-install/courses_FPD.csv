@@ -15,6 +15,7 @@ ID_CATEGORY_cd_smr,50020125-IFC201-16711,SMR - IPE II - Itinerario personal para
 ID_CATEGORY_cd_smr,50020125-IFC201-16697,SMR - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_cd_smr,50020125-IFC201-16695,SMR - Inglés profesional (GM),1
 ID_CATEGORY_cd_smr,50020125-IFC201-16693,SMR - Digitalización aplicada a los sectores productivos (GM),1
+ID_CATEGORY_cd_smr,50020125-IFC201-feoe,SMR - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_cd_asir,50020125-IFC301-643t,ASIR - Coordinación - Tutoría,1
 ID_CATEGORY_cd_asir,50020125-IFC301-5276,ASIR - Lenguajes de marcas y sistemas de gestión de información,1
 ID_CATEGORY_cd_asir,50020125-IFC301-5275,ASIR - Gestión de bases de datos,1
@@ -35,6 +36,7 @@ ID_CATEGORY_cd_asir,50020125-IFC301-16752,ASIR - IPE II - Itinerario personal pa
 ID_CATEGORY_cd_asir,50020125-IFC301-16739,ASIR - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_cd_asir,50020125-IFC301-16737,ASIR - Inglés profesional,1
 ID_CATEGORY_cd_asir,50020125-IFC301-16728,ASIR - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_cd_asir,50020125-IFC301-feoe,ASIR - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_cd_dam,50020125-IFC302-681t,DAM - Coordinación - Tutoría,1
 ID_CATEGORY_cd_dam,50020125-IFC302-5293,DAM - Entornos de desarrollo,1
 ID_CATEGORY_cd_dam,50020125-IFC302-5291,DAM - Programación,1
@@ -55,6 +57,7 @@ ID_CATEGORY_cd_dam,50020125-IFC302-16787,DAM - IPE II - Itinerario personal para
 ID_CATEGORY_cd_dam,50020125-IFC302-16773,DAM - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_cd_dam,50020125-IFC302-16771,DAM - Inglés profesional,1
 ID_CATEGORY_cd_dam,50020125-IFC302-16767,DAM - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_cd_dam,50020125-IFC302-feoe,DAM - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_cd_daw,50020125-IFC303-682t,DAW - Coordinación - Tutoría,1
 ID_CATEGORY_cd_daw,50020125-IFC303-5182,DAW - Entornos de desarrollo,1
 ID_CATEGORY_cd_daw,50020125-IFC303-5181,DAW - Programación,1
@@ -74,6 +77,7 @@ ID_CATEGORY_cd_daw,50020125-IFC303-16829,DAW - IPE II - Itinerario personal para
 ID_CATEGORY_cd_daw,50020125-IFC303-16811,DAW - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_cd_daw,50020125-IFC303-16809,DAW - Inglés profesional,1
 ID_CATEGORY_cd_daw,50020125-IFC303-16805,DAW - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_cd_daw,50020125-IFC303-feoe,DAW - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_cd_ceti,50020125-CESIFC01-873t,CETI - Coordinación - Tutoría,1
 ID_CATEGORY_cd_ceti,50020125-CESIFC01-14344,CETI - Normativa de ciberseguridad,1
 ID_CATEGORY_cd_ceti,50020125-CESIFC01-14343,CETI - Hacking ético,1
@@ -118,6 +122,7 @@ ID_CATEGORY_ba_dam,44010537-IFC302-16787,DAM - IPE II - Itinerario personal para
 ID_CATEGORY_ba_dam,44010537-IFC302-16773,DAM - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_ba_dam,44010537-IFC302-16771,DAM - Inglés profesional,1
 ID_CATEGORY_ba_dam,44010537-IFC302-16767,DAM - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_ba_dam,44010537-IFC302-feoe,DAM - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_ca_ad,50018829-ADG302-7872,AD - Proyecto de asistencia a la dirección LOE,1
 ID_CATEGORY_ca_ad,50018829-ADG302-7871,AD - Gestión avanzada de la información,1
 ID_CATEGORY_ca_ad,50018829-ADG302-7870,AD - Organización de eventos empresariales,1
@@ -137,6 +142,7 @@ ID_CATEGORY_ca_ad,50018829-ADG302-14730,AD - IPE II - Itinerario personal para l
 ID_CATEGORY_ca_ad,50018829-ADG302-14719,AD - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_ca_ad,50018829-ADG302-14717,AD - Inglés profesional,1
 ID_CATEGORY_ca_ad,50018829-ADG302-14713,AD - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_ca_ad,50018829-ADG302-feoe,AD - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_ca_af,50018829-ADG301-79t,AF - Coordinación - Tutoría,1
 ID_CATEGORY_ca_af,50018829-ADG301-5297,AF - Comunicación y atención al cliente,1
 ID_CATEGORY_ca_af,50018829-ADG301-5296,AF - Proceso integral de la actividad comercial,1
@@ -157,6 +163,7 @@ ID_CATEGORY_ca_af,50018829-ADG301-14700,AF - IPE II - Itinerario personal para l
 ID_CATEGORY_ca_af,50018829-ADG301-14681,AF - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_ca_af,50018829-ADG301-14679,AF - Inglés profesional,1
 ID_CATEGORY_ca_af,50018829-ADG301-14675,AF - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_ca_af,50018829-ADG301-feoe,AF - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_ca_lacc,50018829-QUI301-5260,LACC - Ensayos microbiológicos,1
 ID_CATEGORY_ca_lacc,50018829-QUI301-5259,LACC - Ensayos fisicoquímicos,1
 ID_CATEGORY_ca_lacc,50018829-QUI301-5256,LACC - Análisis químicos,1
@@ -175,6 +182,7 @@ ID_CATEGORY_ca_lacc,50018829-QUI301-17889,LACC - IPE I - Itinerario personal par
 ID_CATEGORY_ca_lacc,50018829-QUI301-17887,LACC - Inglés profesional,1
 ID_CATEGORY_ca_lacc,50018829-QUI301-17881,LACC - Digitalización aplicada a los sectores productivos (GS),1
 ID_CATEGORY_ca_lacc,50018829-QUI301-122t,LACC - Coordinación - Tutoría,1
+ID_CATEGORY_ca_lacc,50018829-QUI301-feoe,LACC - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_le_ac,50010314-COM201-700t,AC - Coordinación  - Tutoría,1
 ID_CATEGORY_le_ac,50010314-COM201-15365,AC - Sostenibilidad aplicada al sistema productivo,1
 ID_CATEGORY_le_ac,50010314-COM201-15360,AC - Proyecto intermodular,1
@@ -194,6 +202,7 @@ ID_CATEGORY_le_ac,50010314-COM201-13947,AC - Dinamización del punto de venta,1
 ID_CATEGORY_le_ac,50010314-COM201-13945,AC - Gestión de compras,1
 ID_CATEGORY_le_ac,50010314-COM201-13943,AC - Marketing en la actividad comercial,1
 ID_CATEGORY_le_ac,50010314-COM201-13942,AC - Procesos de venta,1
+ID_CATEGORY_le_ac,50010314-COM201-feoe,AC - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_le_ci,50010314-COM301-83t,CI - Coordinación - Tutoría,1
 ID_CATEGORY_le_ci,50010314-COM301-5409,CI - Gestión administrativa del comercio internacional,1
 ID_CATEGORY_le_ci,50010314-COM301-5408,CI - Logística de almacenamiento,1
@@ -214,6 +223,7 @@ ID_CATEGORY_le_ci,50010314-COM301-15392,CI - IPE II - Itinerario personal para l
 ID_CATEGORY_le_ci,50010314-COM301-15382,CI - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_le_ci,50010314-COM301-15380,CI - Inglés profesional,1
 ID_CATEGORY_le_ci,50010314-COM301-15373,CI - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_le_ci,50010314-COM301-feoe,CI - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_le_gvec,50010314-COM302-7928,GVEC - Proyecto de gestión de ventas y espacios comerciales LOE,1
 ID_CATEGORY_le_gvec,50010314-COM302-7926,GVEC - Investigación comercial,1
 ID_CATEGORY_le_gvec,50010314-COM302-7925,GVEC - Logística de aprovisionamiento,1
@@ -234,6 +244,7 @@ ID_CATEGORY_le_gvec,50010314-COM302-15428,GVEC - IPE II - Itinerario personal pa
 ID_CATEGORY_le_gvec,50010314-COM302-15418,GVEC - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_le_gvec,50010314-COM302-15414,GVEC - Inglés profesional,1
 ID_CATEGORY_le_gvec,50010314-COM302-15409,GVEC - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_le_gvec,50010314-COM302-feoe,GVEC - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_le_tl,50010314-COM303-85t,TL - Coordinación - Tutoría,1
 ID_CATEGORY_le_tl,50010314-COM303-5426,TL - Gestión administrativa del comercio internacional,1
 ID_CATEGORY_le_tl,50010314-COM303-5424,TL - Logística de almacenamiento,1
@@ -253,11 +264,12 @@ ID_CATEGORY_le_tl,50010314-COM303-15465,TL - IPE II - Itinerario personal para l
 ID_CATEGORY_le_tl,50010314-COM303-15454,TL - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_le_tl,50010314-COM303-15452,TL - Inglés profesional,1
 ID_CATEGORY_le_tl,50010314-COM303-15445,TL - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_le_tl,50010314-COM303-feoe,TL - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_le_pae,50010314-IMS302-7951,PAE - Proyecto de producción de audiovisuales y espectáculos LOE,1
 ID_CATEGORY_le_pae,50010314-IMS302-7950,PAE - Administración y promoción de audiovisuales y espectáculos,1
 ID_CATEGORY_le_pae,50010314-IMS302-7948,PAE - Gestión de proyectos de espectáculos y eventos,1
 ID_CATEGORY_le_pae,50010314-IMS302-7946,PAE - Gestión de proyectos de televisión y radio,1
-ID_CATEGORY_le_pae,50010314-IMS302-7945,PAE - Gestión de proyectos de cine - vídeo y multimedia,1
+ID_CATEGORY_le_pae,50010314-IMS302-7945,"PAE - Gestión de proyectos de cine, video y multimedia",1
 ID_CATEGORY_le_pae,50010314-IMS302-7940,PAE - Formación en centros de trabajo LOE,1
 ID_CATEGORY_le_pae,50010314-IMS302-7935,PAE - Recursos expresivos audiovisuales y escénicos,1
 ID_CATEGORY_le_pae,50010314-IMS302-7933,PAE - Planificación de proyectos de espectáculos y eventos,1
@@ -271,6 +283,7 @@ ID_CATEGORY_le_pae,50010314-IMS302-17371,PAE - IPE II - Itinerario personal para
 ID_CATEGORY_le_pae,50010314-IMS302-17353,PAE - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_le_pae,50010314-IMS302-17351,PAE - Inglés profesional,1
 ID_CATEGORY_le_pae,50010314-IMS302-17349,PAE - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_le_pae,50010314-IMS302-feoe,PAE - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_le_smr,50010314-IFC201-627t,SMR - Coordinación - Tutoría,1
 ID_CATEGORY_le_smr,50010314-IFC201-5351,SMR - Redes locales,1
 ID_CATEGORY_le_smr,50010314-IFC201-5349,SMR - Aplicaciones ofimáticas,1
@@ -288,6 +301,7 @@ ID_CATEGORY_le_smr,50010314-IFC201-16711,SMR - IPE II - Itinerario personal para
 ID_CATEGORY_le_smr,50010314-IFC201-16697,SMR - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_le_smr,50010314-IFC201-16695,SMR - Inglés profesional (GM),1
 ID_CATEGORY_le_smr,50010314-IFC201-16693,SMR - Digitalización aplicada a los sectores productivos (GM),1
+ID_CATEGORY_le_smr,50010314-IFC201-feoe,SMR - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_le_daw,50010314-IFC303-682t,DAW - Coordinación - Tutoría,1
 ID_CATEGORY_le_daw,50010314-IFC303-5182,DAW - Entornos de desarrollo,1
 ID_CATEGORY_le_daw,50010314-IFC303-5181,DAW - Programación,1
@@ -307,6 +321,7 @@ ID_CATEGORY_le_daw,50010314-IFC303-16829,DAW - IPE II - Itinerario personal para
 ID_CATEGORY_le_daw,50010314-IFC303-16811,DAW - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_le_daw,50010314-IFC303-16809,DAW - Inglés profesional,1
 ID_CATEGORY_le_daw,50010314-IFC303-16805,DAW - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_le_daw,50010314-IFC303-feoe,DAW - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_pi_iea,22010712-ELE202-624t,IEA - Coordinación - Tutoría,1
 ID_CATEGORY_pi_iea,22010712-ELE202-5338,IEA - Instalaciones eléctricas interiores.,1
 ID_CATEGORY_pi_iea,22010712-ELE202-5337,IEA - Electrotecnia,1
@@ -325,6 +340,7 @@ ID_CATEGORY_pi_iea,22010712-ELE202-15571,IEA - Inglés profesional (GM),1
 ID_CATEGORY_pi_iea,22010712-ELE202-15564,IEA - Digitalización aplicada a los sectores productivos (GM),1
 ID_CATEGORY_pi_iea,22010712-ELE202-12360,IEA - Instalaciones solares fotovoltaicas,1
 ID_CATEGORY_pi_iea,22010712-ELE202-12359,IEA - Electrónica,1
+ID_CATEGORY_pi_iea,22010712-ELE202-feoe,IEA - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_sb_eca,44003028-SEA301-757t,ECA - Coordinación - Tutoría,1
 ID_CATEGORY_sb_eca,44003028-SEA301-18409,ECA - Sostenibilidad aplicada al sistema productivo,1
 ID_CATEGORY_sb_eca,44003028-SEA301-18407,ECA - Proyecto intermodular de educación y control ambiental,1
@@ -345,6 +361,7 @@ ID_CATEGORY_sb_eca,44003028-SEA301-12343,ECA - Métodos y productos cartográfic
 ID_CATEGORY_sb_eca,44003028-SEA301-12342,ECA - Medio natural,1
 ID_CATEGORY_sb_eca,44003028-SEA301-12339,ECA - Estructura y dinámica del medio ambiente,1
 ID_CATEGORY_sb_eca,44003028-SEA301-12338,ECA - Gestión ambiental,1
+ID_CATEGORY_sb_eca,44003028-SEA301-feoe,ECA - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_av_ei,50009348-SSC302-5441,EI - Primeros auxilios,1
 ID_CATEGORY_av_ei,50009348-SSC302-5436,EI - Desarrollo cognitivo y motor,1
 ID_CATEGORY_av_ei,50009348-SSC302-5434,EI - El juego infantil y su metodología,1
@@ -364,6 +381,26 @@ ID_CATEGORY_av_ei,50009348-SSC302-18599,EI - IPE I - Itinerario personal para la
 ID_CATEGORY_av_ei,50009348-SSC302-18597,EI - Inglés profesional,1
 ID_CATEGORY_av_ei,50009348-SSC302-18593,EI - Digitalización aplicada a los sectores productivos (GS),1
 ID_CATEGORY_av_ei,50009348-SSC302-140t,EI - Coordinación - Tutoría,1
+ID_CATEGORY_av_ei,50009348-SSC302-feoe,EI - Formación en Empresa u Organismo Equiparado,1
+ID_CATEGORY_flc_mi,44004550-IMA302-0001,MI - Coordinación  - Tutoría,1
+ID_CATEGORY_flc_mi,44004550-IMA302-0002,MI - Procesos de gestión del mantenimiento y calidad,0
+ID_CATEGORY_flc_mi,44004550-IMA302-0003,MI - Sistemas mecánicos,0
+ID_CATEGORY_flc_mi,44004550-IMA302-0004,MI - Sistemas hidráulico y neumático,1
+ID_CATEGORY_flc_mi,44004550-IMA302-0005,MI - Sistemas eléctrico y electrónicos,1
+ID_CATEGORY_flc_mi,44004550-IMA302-0006,MI - Integración de sistemas,0
+ID_CATEGORY_flc_mi,44004550-IMA302-0007,MI - Simulación de sistemas mecatrónicos,0
+ID_CATEGORY_flc_mi,44004550-IMA302-0008,MI - Configuración de sistemas mecatrónicos,0
+ID_CATEGORY_flc_mi,44004550-IMA302-0009,MI - Procesos de  fabricación,1
+ID_CATEGORY_flc_mi,44004550-IMA302-0010,MI - Representación gráfica de sistemas mecatrónicos,1
+ID_CATEGORY_flc_mi,44004550-IMA302-0011,MI - Elementos de máquinas,1
+ID_CATEGORY_flc_mi,44004550-IMA302-0012,MI - Proyecto intermodular de mecatrónica industrial,0
+ID_CATEGORY_flc_mi,44004550-IMA302-0013,MI - IPE I - Itinerario personal para la empleabilidad I,1
+ID_CATEGORY_flc_mi,44004550-IMA302-0014,MI - IPE II - Itinerario personal para la empleabilidad II,0
+ID_CATEGORY_flc_mi,44004550-IMA302-0015,MI - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_flc_mi,44004550-IMA302-0016,MI - Sostenibilidad aplicada al sistema productivo,0
+ID_CATEGORY_flc_mi,44004550-IMA302-0017,MI - Inglés profesional,1
+ID_CATEGORY_flc_mi,44004550-IMA302-0018,MI - Módulo profesional optativo,0
+ID_CATEGORY_flc_mi,44004550-IMA302-0019,MI - Formación en Empresa u Organismo Equiparado,0
 ID_CATEGORY_lb_apsd,50008460-SSC201-687t,APSD - Coordinación - Tutoría,1
 ID_CATEGORY_lb_apsd,50008460-SSC201-5382,APSD - Atención sanitaria,1
 ID_CATEGORY_lb_apsd,50008460-SSC201-5381,APSD - Apoyo domiciliario,1
@@ -383,6 +420,7 @@ ID_CATEGORY_lb_apsd,50008460-SSC201-18518,APSD - IPE II - Itinerario personal pa
 ID_CATEGORY_lb_apsd,50008460-SSC201-18506,APSD - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_lb_apsd,50008460-SSC201-18504,APSD - Inglés profesional (GM),1
 ID_CATEGORY_lb_apsd,50008460-SSC201-18502,APSD - Digitalización aplicada a los sectores productivos (GM),1
+ID_CATEGORY_lb_apsd,50008460-SSC201-feoe,APSD - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_mm_is,50008642-SSC303-7901,IS - Proyecto de integración social LOE,1
 ID_CATEGORY_mm_is,50008642-SSC303-7899,IS - Habilidades sociales,1
 ID_CATEGORY_mm_is,50008642-SSC303-7897,IS - Metodología de la intervención social,1
@@ -403,6 +441,7 @@ ID_CATEGORY_mm_is,50008642-SSC303-18643,IS - IPE II - Itinerario personal para l
 ID_CATEGORY_mm_is,50008642-SSC303-18631,IS - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_mm_is,50008642-SSC303-18627,IS - Inglés profesional,1
 ID_CATEGORY_mm_is,50008642-SSC303-18623,IS - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_mm_is,50008642-SSC303-feoe,IS - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_mv_ei,22004611-SSC302-5441,EI - Primeros auxilios,1
 ID_CATEGORY_mv_ei,22004611-SSC302-5436,EI - Desarrollo cognitivo y motor,1
 ID_CATEGORY_mv_ei,22004611-SSC302-5434,EI - El juego infantil y su metodología,1
@@ -422,6 +461,7 @@ ID_CATEGORY_mv_ei,22004611-SSC302-18599,EI - IPE I - Itinerario personal para la
 ID_CATEGORY_mv_ei,22004611-SSC302-18597,EI - Inglés profesional,1
 ID_CATEGORY_mv_ei,22004611-SSC302-18593,EI - Digitalización aplicada a los sectores productivos (GS),1
 ID_CATEGORY_mv_ei,22004611-SSC302-140t,EI - Coordinación - Tutoría,1
+ID_CATEGORY_mv_ei,22004611-SSC302-feoe,EI - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_mi_avge,50010156-HOT301-645t,AVGE - Coordinación - Tutoría,1
 ID_CATEGORY_mi_avge,50010156-HOT301-5463,AVGE - Dirección de entidades de intermediación turística,1
 ID_CATEGORY_mi_avge,50010156-HOT301-5457,AVGE - Recursos turísticos,1
@@ -441,6 +481,7 @@ ID_CATEGORY_mi_avge,50010156-HOT301-16478,AVGE - IPE II - Itinerario personal pa
 ID_CATEGORY_mi_avge,50010156-HOT301-16470,AVGE - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_mi_avge,50010156-HOT301-16468,AVGE - Inglés profesional,1
 ID_CATEGORY_mi_avge,50010156-HOT301-16462,AVGE - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_mi_avge,50010156-HOT301-feoe,AVGE - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_ps_asir,50010144-IFC301-643t,ASIR - Coordinación - Tutoría,1
 ID_CATEGORY_ps_asir,50010144-IFC301-5276,ASIR - Lenguajes de marcas y sistemas de gestión de información,1
 ID_CATEGORY_ps_asir,50010144-IFC301-5275,ASIR - Gestión de bases de datos,1
@@ -461,6 +502,7 @@ ID_CATEGORY_ps_asir,50010144-IFC301-16752,ASIR - IPE II - Itinerario personal pa
 ID_CATEGORY_ps_asir,50010144-IFC301-16739,ASIR - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_ps_asir,50010144-IFC301-16737,ASIR - Inglés profesional,1
 ID_CATEGORY_ps_asir,50010144-IFC301-16728,ASIR - Digitalización aplicada a los sectores productivos (GS),1
+ID_CATEGORY_ps_asir,50010144-IFC301-feoe,ASIR - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_rg_fp,50009567-SAN202-630t,FP - Coordinación - Tutoría,1
 ID_CATEGORY_rg_fp,50009567-SAN202-5329,FP - Operaciones básicas de laboratorio,1
 ID_CATEGORY_rg_fp,50009567-SAN202-5327,FP - Dispensación de productos farmacéuticos,1
@@ -479,6 +521,7 @@ ID_CATEGORY_rg_fp,50009567-SAN202-18007,FP - IPE II - Itinerario personal para l
 ID_CATEGORY_rg_fp,50009567-SAN202-17991,FP - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_rg_fp,50009567-SAN202-17989,FP - Inglés profesional,1
 ID_CATEGORY_rg_fp,50009567-SAN202-17983,FP - Digitalización aplicada a los sectores productivos (GM),1
+ID_CATEGORY_rg_fp,50009567-SAN202-feoe,FP - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_rg_es,50009567-SAN203-618t,ES - Coordinación - Tutoría,1
 ID_CATEGORY_rg_es,50009567-SAN203-5319,ES - Anatomofisiología y patología básicas,1
 ID_CATEGORY_rg_es,50009567-SAN203-5316,ES - Apoyo psicológico en situaciones de emergencia,1
@@ -498,6 +541,7 @@ ID_CATEGORY_rg_es,50009567-SAN203-18042,ES - IPE II - Itinerario personal para l
 ID_CATEGORY_rg_es,50009567-SAN203-18034,ES - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_rg_es,50009567-SAN203-18032,ES - Inglés profesional,1
 ID_CATEGORY_rg_es,50009567-SAN203-18025,ES - Digitalización aplicada a los sectores productivos (GM),1
+ID_CATEGORY_rg_es,50009567-SAN203-feoe,ES - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_rg_sti,50009567-ELE304-97t,STI - Coordinación  - Tutoría,1
 ID_CATEGORY_rg_sti,50009567-ELE304-15786,STI - Sostenibilidad aplicada al sistema productivo,1
 ID_CATEGORY_rg_sti,50009567-ELE304-15778,STI - Proyecto intermodular de sistemas de telecomunicaciones e informáticos,1
@@ -518,6 +562,7 @@ ID_CATEGORY_rg_sti,50009567-ELE304-13930,STI - Sistemas de telefonía fija y mó
 ID_CATEGORY_rg_sti,50009567-ELE304-13929,STI - Elementos de sistemas de telecomunicaciones,1
 ID_CATEGORY_rg_sti,50009567-ELE304-13928,STI - Sistemas informáticos y redes locales,1
 ID_CATEGORY_rg_sti,50009567-ELE304-13926,STI - Gestión de proyectos de instalaciones de telecomunicaciones,1
+ID_CATEGORY_rg_sti,50009567-ELE304-feoe,STI - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_se_ga,44003211-ADG201-639t,GA - Coordinación - Tutoría,1
 ID_CATEGORY_se_ga,44003211-ADG201-5368,GA - Técnica contable,1
 ID_CATEGORY_se_ga,44003211-ADG201-5367,GA - Tratamiento informático de la información,1
@@ -536,6 +581,7 @@ ID_CATEGORY_se_ga,44003211-ADG201-14655,GA - IPE II - Itinerario personal para l
 ID_CATEGORY_se_ga,44003211-ADG201-14642,GA - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_se_ga,44003211-ADG201-14640,GA - Inglés profesional (GM),1
 ID_CATEGORY_se_ga,44003211-ADG201-14636,GA - Digitalización aplicada a los sectores productivos (GM),1
+ID_CATEGORY_se_ga,44003211-ADG201-feoe,GA - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_sg_ga,22002521-ADG201-639t,GA - Coordinación - Tutoría,1
 ID_CATEGORY_sg_ga,22002521-ADG201-5368,GA - Técnica contable,1
 ID_CATEGORY_sg_ga,22002521-ADG201-5367,GA - Tratamiento informático de la información,1
@@ -554,6 +600,7 @@ ID_CATEGORY_sg_ga,22002521-ADG201-14655,GA - IPE II - Itinerario personal para l
 ID_CATEGORY_sg_ga,22002521-ADG201-14642,GA - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_sg_ga,22002521-ADG201-14640,GA - Inglés profesional (GM),1
 ID_CATEGORY_sg_ga,22002521-ADG201-14636,GA - Digitalización aplicada a los sectores productivos (GM),1
+ID_CATEGORY_sg_ga,22002521-ADG201-feoe,GA - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_sg_ceti,22002521-CESIFC01-873t,CETI - Coordinación - Tutoría,1
 ID_CATEGORY_sg_ceti,22002521-CESIFC01-14344,CETI - Normativa de ciberseguridad.,1
 ID_CATEGORY_sg_ceti,22002521-CESIFC01-14343,CETI - Hacking ético,1
@@ -578,6 +625,7 @@ ID_CATEGORY_tm_ga,50010511-ADG201-14655,GA - IPE II - Itinerario personal para l
 ID_CATEGORY_tm_ga,50010511-ADG201-14642,GA - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_tm_ga,50010511-ADG201-14640,GA - Inglés profesional (GM),1
 ID_CATEGORY_tm_ga,50010511-ADG201-14636,GA - Digitalización aplicada a los sectores productivos (GM),1
+ID_CATEGORY_tm_ga,50010511-ADG201-feoe,GA - Formación en Empresa u Organismo Equiparado,1
 ID_CATEGORY_vt_es,44003235-SAN203-618t,ES - Coordinación - Tutoría,1
 ID_CATEGORY_vt_es,44003235-SAN203-5319,ES - Anatomofisiología y patología básicas,1
 ID_CATEGORY_vt_es,44003235-SAN203-5316,ES - Apoyo psicológico en situaciones de emergencia,1
@@ -597,3 +645,4 @@ ID_CATEGORY_vt_es,44003235-SAN203-18042,ES - IPE II - Itinerario personal para l
 ID_CATEGORY_vt_es,44003235-SAN203-18034,ES - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_vt_es,44003235-SAN203-18032,ES - Inglés profesional,1
 ID_CATEGORY_vt_es,44003235-SAN203-18025,ES - Digitalización aplicada a los sectores productivos (GM),1
+ID_CATEGORY_vt_es,44003235-SAN203-feoe,ES - Formación en Empresa u Organismo Equiparado,1
