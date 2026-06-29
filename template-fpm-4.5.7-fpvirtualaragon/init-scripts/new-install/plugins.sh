@@ -165,12 +165,19 @@ while IFS= read -r PLUGIN; do
     echo ""
     echo "===> Processing plugin: ${PLUGIN}"
 
-    # Instalar via moosh si esta disponible para esta version
-    if moosh plugin-list | grep "^${PLUGIN}" >/dev/null; then
-        echo "trying to install ${PLUGIN} ..."
-        moosh plugin-install -d ${PLUGIN} || echo "${PLUGIN} already present or install skipped"
+    INSTALL_METHOD=$(jq -r ".plugins[] | select(.name == \"${PLUGIN}\") | .install_method // \"moosh\"" "${PLUGINS_JSON:-/init-scripts/plugins.json}")
+
+    if [ "${INSTALL_METHOD}" = "git_clone" ]; then
+        echo "Installing ${PLUGIN} via git clone..."
+        /init-scripts/lib/clone-plugin-runtime.sh ${PLUGIN}
     else
-        echo "${PLUGIN} is not available in remote list for ${VERSION_MINOR}, checking local..."
+        # Instalar via moosh si esta disponible para esta version
+        if moosh plugin-list | grep "^${PLUGIN}" >/dev/null; then
+            echo "trying to install ${PLUGIN} ..."
+            moosh plugin-install -d ${PLUGIN} || echo "${PLUGIN} already present or install skipped"
+        else
+            echo "${PLUGIN} is not available in remote list for ${VERSION_MINOR}, checking local..."
+        fi
     fi
 
     # Ejecutar acciones asociadas (configuracion post-instalacion)
@@ -183,7 +190,10 @@ done < <(plugins_list_enabled "${SCHOOL_TYPE}" "new-install")
 if [ -n "${LAST_PLUGIN:-}" ]; then
     echo ""
     echo "===> Re-processing last plugin: ${LAST_PLUGIN}"
-    if moosh plugin-list | grep "^${LAST_PLUGIN}" >/dev/null; then
+    LAST_INSTALL_METHOD=$(jq -r ".plugins[] | select(.name == \"${LAST_PLUGIN}\") | .install_method // \"moosh\"" "${PLUGINS_JSON:-/init-scripts/plugins.json}")
+    if [ "${LAST_INSTALL_METHOD}" = "git_clone" ]; then
+        /init-scripts/lib/clone-plugin-runtime.sh ${LAST_PLUGIN}
+    elif moosh plugin-list | grep "^${LAST_PLUGIN}" >/dev/null; then
         moosh plugin-install -d ${LAST_PLUGIN} || echo "${LAST_PLUGIN} already present or install skipped"
     fi
     actions_asociated_to_plugin ${LAST_PLUGIN}
