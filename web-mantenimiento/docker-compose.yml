@@ -1,0 +1,24 @@
+services:
+  mantenimiento:
+    image: nginx:alpine
+    container_name: mantenimiento-web
+
+    environment:
+      VIRTUAL_HOST: "${VIRTUAL_HOST}"
+      LETSENCRYPT_HOST: "${VIRTUAL_HOST}"
+      LETSENCRYPT_EMAIL: "${SSL_EMAIL}"
+
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+
+    expose:
+      - "80"
+
+    restart: always
+
+    networks:
+      - nginx-proxy_frontend
+
+networks:
+  nginx-proxy_frontend:
+    external: true
