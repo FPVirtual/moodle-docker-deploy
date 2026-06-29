@@ -63,43 +63,7 @@ if [[ "${SCHOOL_TYPE}" = "FPD" ]];
         echo "  images"
 
         #Añadido desde madeby para moodle4
-        moosh config-set scss "
-        input[value|='CC'] {
-            display: none !important;
-        }
-
-        input[value|='Para'] {
-            display: none !important;
-        }
-
-        input[value|='Responder Todos'] {
-            display: none !important;
-        }
-        
-        .madeby {
-            display: none;
-        }
-        .contact {
-            display: none;
-        }
-        .socialnetworks {
-            display: none;
-        }
-        .path-login {
-	    #page {
-    	    max-width: 100%;
-	    }
-	    .login-container {
-    	    .login-logo {
-        	justify-content: center;
-    	    }
-	    }
-	    .login-identityprovider-btn.facebook {
-    	    background-color: $facebook-color;
-    	    color: #fff;
-	    }
-}
-        " theme_moove
+        moosh config-set scss "$(cat /init-scripts/themes/fpdist/scss/moove.scss)" theme_moove
     else
         echo "... for not FPD..."     
         cp /init-scripts/themes/*tar.gz /var/www/html/        
