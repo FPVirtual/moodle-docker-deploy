@@ -6,6 +6,12 @@
 # Load sensitive data or configurable data from a .env file
 #export $(grep -E -v '^#' /init-scripts/.env | xargs)
 
+# Asegurar que jq esta disponible para los scripts de inicializacion
+if ! command -v jq >/dev/null 2>&1; then
+    echo >&2 "Installing jq..."
+    apt-get update >/dev/null 2>&1 && apt-get install -y jq >/dev/null 2>&1
+fi
+
 FILES="/init-scripts/${INSTALL_TYPE}/moodle.sh
 /init-scripts/${INSTALL_TYPE}/plugins.sh
 /init-scripts/${INSTALL_TYPE}/import_${SCHOOL_TYPE}_categories_and_courses.sh
