@@ -166,7 +166,7 @@ while IFS= read -r PLUGIN; do
     echo "===> Processing plugin: ${PLUGIN}"
 
     # Instalar via moosh si esta disponible para esta version
-    if moosh plugin-list | grep "^${PLUGIN} " | grep "${VERSION_MINOR}" >/dev/null; then
+    if moosh plugin-list | grep "^${PLUGIN}" >/dev/null; then
         echo "trying to install ${PLUGIN} ..."
         moosh plugin-install -d ${PLUGIN} || echo "${PLUGIN} already present or install skipped"
     else
@@ -183,7 +183,7 @@ done < <(plugins_list_enabled "${SCHOOL_TYPE}" "new-install")
 if [ -n "${LAST_PLUGIN:-}" ]; then
     echo ""
     echo "===> Re-processing last plugin: ${LAST_PLUGIN}"
-    if moosh plugin-list | grep "^${LAST_PLUGIN} " | grep "${VERSION_MINOR}" >/dev/null; then
+    if moosh plugin-list | grep "^${LAST_PLUGIN}" >/dev/null; then
         moosh plugin-install -d ${LAST_PLUGIN} || echo "${LAST_PLUGIN} already present or install skipped"
     fi
     actions_asociated_to_plugin ${LAST_PLUGIN}
