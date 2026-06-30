@@ -1,0 +1,134 @@
+input[value|='CC'] {
+    display: none !important;
+}
+
+input[value|='Para'] {
+    display: none !important;
+}
+
+input[value|='Responder Todos'] {
+    display: none !important;
+}
+
+.madeby {
+    display: none;
+}
+.contact {
+    display: none;
+}
+.socialnetworks {
+    display: none;
+}
+.path-login {
+    #page {
+        max-width: 100%;
+    }
+    .login-container {
+        .login-logo {
+            justify-content: center;
+        }
+    }
+    .login-identityprovider-btn.facebook {
+        background-color: -color;
+        color: #fff;
+    }
+}
+.activity-item:not(.activityinline) {
+padding:0
+}
+
+
+#page.drawers{
+margin-top: 60px;
+}
+
+.moremenu .nav-link{
+height: 40px;
+}
+
+.secondary-navigation .moremenu{
+height: 40px;
+}
+.secondary-navigation{
+top: 50px;
+}
+
+.navbar.fixed-top{
+height: 50px;
+}
+
+.navbar.fixed-top .primary-navigation .navigation .nav-link{
+height: 50px;
+}
+
+body.has-secondarynavigation #page, body.has-secondarynavigation #page.drawers{
+margin-top:90px;
+}
+
+// CODIGO PARA MEJORAR LA CLASE CODE
+
+code {
+  background-color: whitesmoke;
+  border-radius: 3px;
+}
+pre code {
+  background-color: whitesmoke;
+  border-radius: 3px;
+}
+pre, code, kbd, samp {
+  padding: 5px;
+  font-size: 0.9rem;
+  color: black
+}
+
+// FIN CODIGO PARA MEJORAR LA CLASE CODE
+
+// CODIGO PARA AMPLIAR LAS TABLAS DE LAS RÚBRICAS
+
+.path-mod-assign [data-region="review-panel"].collapsed+[data-region="grade-panel"] [data-region="grade"], .path-mod-assign [data-region="grade-panel"].fullwidth [data-region="grade"] {
+    max-width: 100%;
+}
+
+.path-mod-assign [data-region="grade-panel"] .fitem.popout {
+  left: 1%;
+  right: 1%;
+  top: 10%;
+  bottom: 5%;
+}
+
+.path-mod-assign [data-region="grade-panel"] .gradingform_rubric .criterion .description {
+    max-width: 500px;
+}
+
+.collapsed + div .gradingform_rubric .criterion .levels .level {
+    max-width: 500px;
+    min-width: 150px;
+}
+
+.collapsed + div td.remark{
+  width: 350px;
+}
+
+.collapsed + div td.remark textarea{
+  min-width: 150px;
+  width: 100%;
+}
+
+.collapsed + div .review-panel{
+  width: 500px;
+}
+
+// INI: CODIGO PARA REDUCIR EL ALTO DE LOS CURSOS DE MIS CURSOS
+
+div.course-summary > div.no-overflow{
+  max-height: 7em;
+}
+
+// FIN: CODIGO PARA REDUCIR EL ALTO DE LOS CURSOS DE MIS CURSOS
+
+// INI: Muestra opciones desplegable en apartado Mis Cursos
+div[data-region="course-content"] .dropdown-menu.dropdown-menu-right.show {
+    display: block;
+    top: -40px !important;
+}
+//FIN: Muestra opciones desplegable en apartado Mis Cursos
