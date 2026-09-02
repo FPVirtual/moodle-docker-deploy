@@ -53,7 +53,7 @@ if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
     exit 0
 fi
 
-CONTENEDOR="${1:-$CONTENOR_POR_DEFECTO}"
+CONTENEDOR="${1:-$CONTENEDOR_POR_DEFECTO}"
 
 if ! command -v docker >/dev/null 2>&1; then
     echo "ERROR: Docker no está instalado o no está disponible en el PATH." >&2
