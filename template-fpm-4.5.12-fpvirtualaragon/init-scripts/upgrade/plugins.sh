@@ -7,6 +7,23 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${SCRIPT_DIR}/../lib/plugins-lib.sh"
 
+# Google Meet: elegir entre fork hyukudan (moderno) o legacy (ronefel).
+# A diferencia de Moodle-Docker, aqui no se clona en build-time; se asume que
+# el codigo correspondiente ya esta presente en moodle-code.
+if [ "${PLUGIN_MOD_GOOGLEMEET_LEGACY:-false}" = "true" ]; then
+    echo >&2 "Google Meet legacy (ronefel) seleccionado. Reemplazando mod/googlemeet..."
+    if [ -d /var/www/html/mod/googlemeet_legacy ]; then
+        rm -rf /var/www/html/mod/googlemeet
+        cp -a /var/www/html/mod/googlemeet_legacy /var/www/html/mod/googlemeet
+        PLUGIN_MOD_GOOGLEMEET=false
+    else
+        echo >&2 "WARNING: /var/www/html/mod/googlemeet_legacy no existe. No se puede activar legacy."
+    fi
+elif [ "${PLUGIN_MOD_GOOGLEMEET:-false}" = "true" ]; then
+    # Hyukudan seleccionado: limpiar legacy para no ocupar espacio
+    rm -rf /var/www/html/mod/googlemeet_legacy
+fi
+
 # GET PLUGIN LIST
 echo >&2 "Downloading plugin list..."
 moosh plugin-list >/dev/null
@@ -28,11 +45,15 @@ while IFS= read -r PLUGIN; do
     echo ""
     echo "===> Processing plugin: ${PLUGIN}"
 
-    INSTALL_METHOD=$(jq -r ".plugins[] | select(.name == \"${PLUGIN}\") | .install_method // \"moosh\"" "${PLUGINS_JSON:-/init-scripts/plugins.json}")
+    INSTALL_METHOD="$(plugins_json_get "${PLUGIN}" "install_method")"
+    INSTALL_METHOD="${INSTALL_METHOD:-moosh}"
 
     if [ "${INSTALL_METHOD}" = "git_clone" ]; then
         echo "Installing ${PLUGIN} via git clone..."
         /init-scripts/lib/clone-plugin-runtime.sh ${PLUGIN}
+        if [ "${PLUGIN}" = "local_educaaragon" ]; then
+            php /init-scripts/new-install/educaaragon_setup.php
+        fi
     else
         # En upgrade instalamos directamente (sin comprobacion remota previa)
         echo "trying to install ${PLUGIN} ..."

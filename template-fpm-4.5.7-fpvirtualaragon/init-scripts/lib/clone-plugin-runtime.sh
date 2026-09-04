@@ -19,28 +19,36 @@ if [ -z "$PLUGIN_NAME" ]; then
     exit 1
 fi
 
-if ! command -v jq >/dev/null 2>&1; then
-    echo "ERROR: jq no esta instalado. No se puede clonar ${PLUGIN_NAME}." >&2
-    exit 1
-fi
-
 if [ ! -f "$PLUGINS_JSON" ]; then
     echo "ERROR: No se encontro $PLUGINS_JSON" >&2
     exit 1
 fi
 
-plugin=$(jq -r ".plugins[] | select(.name == \"$PLUGIN_NAME\")" "$PLUGINS_JSON")
+# Usamos python3 (siempre disponible en la imagen) en vez de jq, que no
+# esta instalado y cuya instalacion via apt-get falla en silencio al
+# ejecutarse init.sh como www-data (sin privilegios).
+plugin_fields=$(python3 -c "
+import json, sys
+try:
+    with open('$PLUGINS_JSON', 'r') as f:
+        data = json.load(f)
+    for p in data.get('plugins', []):
+        if p['name'] == '$PLUGIN_NAME':
+            print(p.get('git_url') or '')
+            print(p.get('git_branch') or '')
+            print(p.get('moodle_path') or '')
+            sys.exit(0)
+    sys.exit(1)
+except Exception as e:
+    print(f'Error JSON: {e}', file=sys.stderr)
+    sys.exit(1)
+") || { echo "ERROR: Plugin ${PLUGIN_NAME} no encontrado en $PLUGINS_JSON" >&2; exit 1; }
 
-if [ -z "$plugin" ] || [ "$plugin" = "null" ]; then
-    echo "ERROR: Plugin ${PLUGIN_NAME} no encontrado en $PLUGINS_JSON" >&2
-    exit 1
-fi
+git_url=$(echo "$plugin_fields" | sed -n '1p')
+git_branch=$(echo "$plugin_fields" | sed -n '2p')
+moodle_path=$(echo "$plugin_fields" | sed -n '3p')
 
-git_url=$(echo "$plugin" | jq -r '.git_url // empty')
-git_branch=$(echo "$plugin" | jq -r '.git_branch // empty')
-moodle_path=$(echo "$plugin" | jq -r '.moodle_path')
-
-if [ -z "$git_url" ] || [ "$git_url" = "null" ]; then
+if [ -z "$git_url" ]; then
     echo "ERROR: Plugin ${PLUGIN_NAME} no tiene git_url definida." >&2
     exit 1
 fi

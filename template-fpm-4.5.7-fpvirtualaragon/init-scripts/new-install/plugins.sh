@@ -165,7 +165,8 @@ while IFS= read -r PLUGIN; do
     echo ""
     echo "===> Processing plugin: ${PLUGIN}"
 
-    INSTALL_METHOD=$(jq -r ".plugins[] | select(.name == \"${PLUGIN}\") | .install_method // \"moosh\"" "${PLUGINS_JSON:-/init-scripts/plugins.json}")
+    INSTALL_METHOD="$(plugins_json_get "${PLUGIN}" "install_method")"
+    INSTALL_METHOD="${INSTALL_METHOD:-moosh}"
 
     if [ "${INSTALL_METHOD}" = "git_clone" ]; then
         echo "Installing ${PLUGIN} via git clone..."
@@ -190,7 +191,8 @@ done < <(plugins_list_enabled "${SCHOOL_TYPE}" "new-install")
 if [ -n "${LAST_PLUGIN:-}" ]; then
     echo ""
     echo "===> Re-processing last plugin: ${LAST_PLUGIN}"
-    LAST_INSTALL_METHOD=$(jq -r ".plugins[] | select(.name == \"${LAST_PLUGIN}\") | .install_method // \"moosh\"" "${PLUGINS_JSON:-/init-scripts/plugins.json}")
+    LAST_INSTALL_METHOD="$(plugins_json_get "${LAST_PLUGIN}" "install_method")"
+    LAST_INSTALL_METHOD="${LAST_INSTALL_METHOD:-moosh}"
     if [ "${LAST_INSTALL_METHOD}" = "git_clone" ]; then
         /init-scripts/lib/clone-plugin-runtime.sh ${LAST_PLUGIN}
     elif moosh plugin-list | grep "^${LAST_PLUGIN}" >/dev/null; then
