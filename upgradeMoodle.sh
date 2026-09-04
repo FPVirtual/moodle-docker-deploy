@@ -2,27 +2,31 @@
 set -eu
 
 usage () {
-    echo 'usage: upgradeMoodle.sh [-p] [-y] [-e env-update] -u "dirsite" -d "upgrade_version_template"'
+    echo 'usage: upgradeMoodle.sh [-p] [-y] [-x] [-e env-update] -u "dirsite" -d "upgrade_version_template"'
     echo "help: upgradeMoodle.sh -h"
 }
 
 showHelp () {
-    echo 'usage: upgradeMoodle.sh [-y] [-e env-update] -u "dirsite" -d "upgrade_version_template"'
+    echo 'usage: upgradeMoodle.sh [-y] [-x] [-e env-update] -u "dirsite" -d "upgrade_version_template"'
     echo "Options:"
     echo "-y -> Yes all questions"
+    echo "-x -> Exclude moodle-data from the file backup (DB and moodle-code are still backed up; moodle-data is never modified by this script)"
     echo "-e -> Add or modify env site variables"
     echo "-u -> site to upgrade. Only accept installdir"
     echo "-d -> directory template to upgrade"
     echo "-h this message"
     echo "Backup moodle site and DB to upgrade in /var/backup_upgrade/ "
-    
+
 }
 
 get_parameter(){
-    while getopts ":ye:u:d:h" opt; do
+    while getopts ":yxe:u:d:h" opt; do
         case $opt in
             y)
                 YES=true
+            ;;
+            x)
+                EXCLUDE_DATA=true
             ;;
             e)
                 ENVUPDATE="${OPTARG}"
@@ -155,7 +159,9 @@ STEP="init"
 
 # Parameters
 YES=false
+EXCLUDE_DATA=false
 MOODLECODEDIR="moodle-code"
+MOODLEDATADIR="moodle-data"
 OLDMOODLECODEDIR="oldmoodlecode"
 get_parameter "$@"
 # WORKDIR -> Site Directory || TEMPLATEUDIR -> New template to apply
@@ -207,7 +213,12 @@ echo "$(basename $0) - Backup DB..."
 mysqldump --lock-tables=false --user ${MOODLE_MYSQL_USER} --password="${MOODLE_MYSQL_PASSWORD}" --host="${MOODLE_DB_HOST}" --databases "${MOODLE_DB_NAME}" > ${BACKUPDIR}/${WORKDIR}_db.sql || { echo "$(basename $0) - backup: Backup DB ${WORKDIR} FAIL!"; exit 1; }
 
 echo "$(basename $0) - Backup Files..."
-sudo rsync -a "${WORKDIR%\/}" ${BACKUPDIR} || { echo "$(basename $0) - backup: Backup Files ${WORKDIR} FAIL!"; exit 1; }
+RSYNC_BACKUP_EXCLUDE=()
+if $EXCLUDE_DATA; then
+    echo "$(basename $0) - Backup Files: excluding ${MOODLEDATADIR} (-x)"
+    RSYNC_BACKUP_EXCLUDE=(--exclude "${MOODLEDATADIR}")
+fi
+sudo rsync -a "${RSYNC_BACKUP_EXCLUDE[@]}" "${WORKDIR%\/}" ${BACKUPDIR} || { echo "$(basename $0) - backup: Backup Files ${WORKDIR} FAIL!"; exit 1; }
 STEP="backup"
 
 
