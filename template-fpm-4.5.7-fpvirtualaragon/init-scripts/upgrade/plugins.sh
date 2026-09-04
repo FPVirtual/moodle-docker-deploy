@@ -28,9 +28,16 @@ while IFS= read -r PLUGIN; do
     echo ""
     echo "===> Processing plugin: ${PLUGIN}"
 
-    # En upgrade instalamos directamente (sin comprobacion remota previa)
-    echo "trying to install ${PLUGIN} ..."
-    moosh plugin-install -d ${PLUGIN} || echo "${PLUGIN} already present or install skipped"
+    INSTALL_METHOD=$(jq -r ".plugins[] | select(.name == \"${PLUGIN}\") | .install_method // \"moosh\"" "${PLUGINS_JSON:-/init-scripts/plugins.json}")
+
+    if [ "${INSTALL_METHOD}" = "git_clone" ]; then
+        echo "Installing ${PLUGIN} via git clone..."
+        /init-scripts/lib/clone-plugin-runtime.sh ${PLUGIN}
+    else
+        # En upgrade instalamos directamente (sin comprobacion remota previa)
+        echo "trying to install ${PLUGIN} ..."
+        moosh plugin-install -d ${PLUGIN} || echo "${PLUGIN} already present or install skipped"
+    fi
 done < <(plugins_list_enabled "${SCHOOL_TYPE}" "upgrade")
 
 echo >&2 "Plugins installed!"

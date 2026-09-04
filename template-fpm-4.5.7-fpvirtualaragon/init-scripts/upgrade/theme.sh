@@ -1,17 +1,46 @@
 #!/bin/bash
 
 #Uso el nombre completo del fichero tar.gz para evitar ambigüedades con el de versiones anteriores
-cp /init-scripts/themes/moove_settings_1782210003.tar.gz /var/www/html/        
-moosh theme-settings-import --targettheme moove moove_settings_1782210003.tar.gz
-cp /init-scripts/themes/frontpage.mustache /var/www/html/theme/moove/templates
-cp /init-scripts/themes/booFont/* /var/www/html/theme/moove/fonts/
-cp /init-scripts/themes/fpdist/pix/favicon.ico /var/www/html/theme/moove/pix/favicon.ico
 
-#Quitamos la imagen de fondo de la página de login. Añadido para moodle4.
-moosh config-set loginbgimg '' theme_moove
-moosh config-set brandcolor '#457b9d' theme_moove
+moosh config-set theme moove
 
-moosh config-set scss "
+if [[ "${SCHOOL_TYPE}" = "FPD" ]];
+    then
+        echo "... for FPD..."
+        cp /init-scripts/themes/fpdist/moove_settings_1782210003.tar.gz /var/www/html/
+        moosh theme-settings-import --targettheme moove moove_settings_1782210003.tar.gz
+        # Las siguientes instrucciones se deben a que en la exportación-importación el tema no se comporta correctamente y deben forzarse
+        moosh config-set displaymarketingbox 1 theme_moove
+        cp -R /init-scripts/themes/fpdist/style /var/www/html/theme/moove
+        cp /init-scripts/themes/fpdist/footer.mustache /var/www/html/theme/moove/templates
+        cp /init-scripts/themes/fpdist/frontpage.mustache /var/www/html/theme/moove/templates
+        cp /init-scripts/themes/fpdist/pix/favicon.ico /var/www/html/theme/moove/pix/favicon.ico
+
+        cp /init-scripts/themes/fpdist/politica-privacidad.php /var/www/html/politica-privacidad.php
+
+        moosh config-set frontpage none
+
+        mkdir -p /var/www/html/soporte/
+        cp -R /init-scripts/themes/fpdist/soporte /var/www/html/soporte
+        cp /init-scripts/themes/fpdist/soporte/secret-sample.php /var/www/html/soporte/secret.php
+
+        mkdir -p /var/www/html/faqs/
+        cp -R /init-scripts/themes/fpdist/faqs /var/www/html/faqs
+
+        #Añadido desde madeby para moodle4
+        moosh config-set scss "$(cat /init-scripts/themes/fpdist/scss/moove.scss)" theme_moove
+    else
+        cp /init-scripts/themes/moove_settings_1782210003.tar.gz /var/www/html/
+        moosh theme-settings-import --targettheme moove moove_settings_1782210003.tar.gz
+        cp /init-scripts/themes/frontpage.mustache /var/www/html/theme/moove/templates
+        cp /init-scripts/themes/booFont/* /var/www/html/theme/moove/fonts/
+        cp /init-scripts/themes/fpdist/pix/favicon.ico /var/www/html/theme/moove/pix/favicon.ico
+
+        #Quitamos la imagen de fondo de la página de login. Añadido para moodle4.
+        moosh config-set loginbgimg '' theme_moove
+        moosh config-set brandcolor '#457b9d' theme_moove
+
+        moosh config-set scss "
     input[value|='CC'] {
         display: none !important;
     }
@@ -62,9 +91,6 @@ moosh config-set scss "
         }
     }
     " theme_moove
+fi
 
 echo >&2 "Theme configured."
-
-
-
-
