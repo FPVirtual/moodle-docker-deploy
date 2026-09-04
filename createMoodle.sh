@@ -316,11 +316,11 @@ set -a; [ -f "${VIRTUALHOST}/.env" ] && . "${VIRTUALHOST}/.env"; set +a
 if [[ "${SCHOOL_TYPE}" = "FPD" ]];
 then
     echo "setting repositories..."
-    REPOSITORIES=( 
-#                "cursos_ministerio" 
-                "ftp_ministerio"
-                "ftp_ministerio_htmls"
-                "mbzs_curso_anterior"
+    REPOSITORIES=(
+#                "cursos_ministerio"
+#                "ftp_ministerio" # montado directamente en docker-compose.yml
+#                "ftp_ministerio_htmls" # montado directamente en docker-compose.yml
+#                "mbzs_curso_anterior" # montado directamente en docker-compose.yml
 #                "mbzs_20210920"
 #                "mbzs_20220628"
 #                "mbzs_20230629"
