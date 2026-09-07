@@ -63,7 +63,6 @@ services:
       APP_PASSWORD: "${APP_PASSWORD}"
       APP_TEACHER_PASSWORD: "${APP_TEACHER_PASSWORD}"
       API_USER_PASSWORD: "${API_USER_PASSWORD}"
-      EDUCAARAGON_RESOURCES_PATH: "${EDUCAARAGON_RESOURCES_PATH:-./recursos-editables}"
       BLACKBOARD_URL: "${BLACKBOARD_URL}"
       BLACKBOARD_KEY: "${BLACKBOARD_KEY}"
       BLACKBOARD_SECRET: "${BLACKBOARD_SECRET}"
@@ -78,7 +77,10 @@ services:
       - moodle_network
     volumes:
       - ./moodle-data:/var/www/moodledata
-      - ${EDUCAARAGON_RESOURCES_PATH:-./recursos-editables}:/var/www/moodledata/repository/recursos-editables
+      - ../zz_mbzs_curso_anterior:/var/www/moodledata/repository/mbzs_curso_anterior
+      - ../zz_ftp_ministerio_htmls:/var/www/moodledata/repository/ftp_ministerio_htmls
+      - ../zz_ftp_ministerio:/var/www/moodledata/repository/ftp_ministerio
+      - ../zz_temporal:/var/www/moodledata/repository/temporal
       - ./moodle-code:/var/www/html
       - ./fpm-conf:/usr/local/etc/php-fpm.d
       - ./php-conf/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
