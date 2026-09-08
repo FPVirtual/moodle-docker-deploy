@@ -68,6 +68,7 @@ JE_MO_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefat
 JE_MV_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES MARTÍNEZ VARGAS" prof_je_mv | grep -o '[0-9]*' | tail -1)
 JE_AV_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES AVEMPACE" prof_je_av | grep -o '[0-9]*' | tail -1)
 JE_MM_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES MARÍA MOLINER" prof_je_mm | grep -o '[0-9]*' | tail -1)
+JE_FLC_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES FERNANDO LÁZARO CARRETER" prof_je_flc | grep -o '[0-9]*' | tail -1)
 
 ADMIN2=$(moosh user-create --password "${MANAGER_PASSWORD}" --email fpdistancia@aragon.es --digest 2 --city Aragón --country ES --firstname "Administrador" --lastname "Campus Digital FP - Virtual" admin2 | grep -o '[0-9]*' | tail -1)
 ADMIN3=$(moosh user-create --password "${MANAGER_PASSWORD}" --email amcandialq@campusdigitalfp.com --digest 2 --city Aragón --country ES --firstname "Administrador" --lastname "Ana María Candial" admin3 | grep -o '[0-9]*' | tail -1)
@@ -146,16 +147,16 @@ ID_CATEGORY_av_ei=$(moosh category-create -p "${ID_CATEGORY_av}" -v 1 -d "SSC302
 ID_CATEGORY_mm=$(moosh category-create -p 0 -v 1 -d "50008642" "IES MARÍA MOLINER" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_mm_is=$(moosh category-create -p "${ID_CATEGORY_mm}" -v 1 -d "SSC303" "Integración Social" | grep -o '[0-9]*' | tail -1)
 
-ID_CATEGORY_cd=$(moosh category-create -p 0 -v 1 -d "50020125" "Campus Digital FP" | grep -o '[0-9]*' | tail -1)
+ID_CATEGORY_flc=$(moosh category-create -p 0 -v 1 -d "44004550" "IES FERNANDO LÁZARO CARRETER" | grep -o '[0-9]*' | tail -1)
+ID_CATEGORY_flc_mi=$(moosh -n category-create -p "${ID_CATEGORY_flc}" -v 1 -d "IMA302" "Mecatrónica Industrial" | grep -o '[0-9]*' | tail -1)
+
+ID_CATEGORY_cd=$(moosh category-create -p 0 -v 1 -d "50020125" "CFP CAMPUS DIGITAL" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_cd_smr=$(moosh category-create -p "${ID_CATEGORY_cd}" -v 1 -d "IFC201" "Sistemas Microinformáticos y Redes" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_cd_asir=$(moosh category-create -p "${ID_CATEGORY_cd}" -v 1 -d "IFC301" "Administración de Sistemas Informáticos en Red" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_cd_dam=$(moosh category-create -p "${ID_CATEGORY_cd}" -v 1 -d "IFC302" "Desarrollo de Aplicaciones Multiplataforma" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_cd_daw=$(moosh category-create -p "${ID_CATEGORY_cd}" -v 1 -d "IFC303" "Desarrollo de Aplicaciones WEB" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_cd_iabd=$(moosh category-create -p "${ID_CATEGORY_cd}" -v 1 -d "CESIFC02" "Inteligencia Artificial y Big Data" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_cd_ceti=$(moosh category-create -p "${ID_CATEGORY_cd}" -v 1 -d "CESIFC01" "Ciberseguridad en Entornos de las Tecnologías de la Información" | grep -o '[0-9]*' | tail -1)
-
-
-
 
 #############################################################################################
 # A los usuarios jefes de estudios les cambio su campo personalizado para que tengan el valor correspondiente a su categoría
@@ -184,6 +185,7 @@ moosh sql-run "INSERT INTO mdl_user_info_data (userid, fieldid, data, dataformat
 moosh sql-run "INSERT INTO mdl_user_info_data (userid, fieldid, data, dataformat) values ($JE_MV_USER_ID, 1, $ID_CATEGORY_mv, 0)"
 moosh sql-run "INSERT INTO mdl_user_info_data (userid, fieldid, data, dataformat) values ($JE_AV_USER_ID, 1, $ID_CATEGORY_av, 0)"
 moosh sql-run "INSERT INTO mdl_user_info_data (userid, fieldid, data, dataformat) values ($JE_MM_USER_ID, 1, $ID_CATEGORY_mm, 0)"
+moosh sql-run "INSERT INTO mdl_user_info_data (userid, fieldid, data, dataformat) values ($JE_FLC_USER_ID, 1, $ID_CATEGORY_flc, 0)"
 
 
 #############################################################################################
@@ -223,6 +225,7 @@ moosh cohort-create -d "50010511-ADG201" -i 50010511-ADG201 -c "${ID_CATEGORY_tm
 moosh cohort-create -d "50018829-ADG301" -i 50018829-ADG301 -c "${ID_CATEGORY_ca}" "50018829-ADG301"
 moosh cohort-create -d "50018829-ADG302" -i 50018829-ADG302 -c "${ID_CATEGORY_ca}" "50018829-ADG302"
 moosh cohort-create -d "50018829-QUI301" -i 50018829-QUI301 -c "${ID_CATEGORY_ca}" "50018829-QUI301"
+moosh cohort-create -d "44004550-IMA302" -i 44004550-IMA302 -c "${ID_CATEGORY_flc}" "44004550-IMA302"
 
 #############################################################################################
 # Añado a la cohorte de jefatura de estudios a los diferentes usuarios de jefes de estudios
@@ -246,6 +249,7 @@ moosh cohort-enrol -u "${JE_MO_USER_ID}" "jefaturas"
 moosh cohort-enrol -u "${JE_MV_USER_ID}" "jefaturas"
 moosh cohort-enrol -u "${JE_AV_USER_ID}" "jefaturas"
 moosh cohort-enrol -u "${JE_MM_USER_ID}" "jefaturas"
+moosh cohort-enrol -u "${JE_FLC_USER_ID}" "jefaturas"
 
 
 #############################################################################################
@@ -416,6 +420,10 @@ do
             "50008642") # IES MARÍA MOLINER
                 echo "****** Enrolling the user ${JE_MM_USER_ID} into the course_id ${COURSE_ID} with role jefatura-estudios"
                 moosh course-enrol -r jefatura-estudios -i "${COURSE_ID}" "${JE_MM_USER_ID}"
+                ;;
+            "44004550") # IES FERNANDO LÁZARO CARRETER
+                echo "****** Enrolling the user ${JE_FLC_USER_ID} into the course_id ${COURSE_ID} with role jefatura-estudios"
+                moosh course-enrol -r jefatura-estudios -i "${COURSE_ID}" "${JE_FLC_USER_ID}"
                 ;;
         esac
     fi
