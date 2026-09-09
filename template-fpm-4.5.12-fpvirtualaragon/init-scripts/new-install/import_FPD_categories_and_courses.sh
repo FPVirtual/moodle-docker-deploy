@@ -51,24 +51,24 @@ JEFATURA_ROLE_ID=$(moosh role-create -d "Los usuarios con rol de inspección tie
 moosh role-import -f /init-scripts/themes/fpdist/roles/role-jefatura-estudios.xml
 
 # Creating users
-JE_SG_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES Sierra de Guara" prof_je_sg | grep -o '[0-9]*' | tail -1)
-JE_SE_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES SANTA EMERENCIANA" prof_je_se | grep -o '[0-9]*' | tail -1)
-JE_TM_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES TIEMPOS MODERNOS" prof_je_tm | grep -o '[0-9]*' | tail -1)
-JE_LE_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "CPIFP LOS ENLACES" prof_je_le | grep -o '[0-9]*' | tail -1)
-JE_CA_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "CPIFP CORONA DE ARAGÓN" prof_je_ca | grep -o '[0-9]*' | tail -1)
-JE_PI_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "CPIFP PIRÁMIDE" prof_je_pi | grep -o '[0-9]*' | tail -1)
-JE_SB_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "CPIFP SAN BLAS" prof_je_sb | grep -o '[0-9]*' | tail -1)
-JE_MI_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES MIRALBUENO" prof_je_mi | grep -o '[0-9]*' | tail -1)
-JE_PS_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES PABLO SERRANO" prof_je_ps | grep -o '[0-9]*' | tail -1)
-JE_BA_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "CPIFP BAJO ARAGÓN" prof_je_ba | grep -o '[0-9]*' | tail -1)
-JE_RG_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES RÍO GÁLLEGO" prof_je_rg | grep -o '[0-9]*' | tail -1)
-JE_VT_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES VEGA DEL TURIA" prof_je_vt | grep -o '[0-9]*' | tail -1)
-JE_LB_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES LUIS BUÑUEL" prof_je_lb | grep -o '[0-9]*' | tail -1)
-JE_MO_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "CPIFP MONTEARAGON" prof_je_mo | grep -o '[0-9]*' | tail -1)
-JE_MV_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES MARTÍNEZ VARGAS" prof_je_mv | grep -o '[0-9]*' | tail -1)
-JE_AV_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES AVEMPACE" prof_je_av | grep -o '[0-9]*' | tail -1)
-JE_MM_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES MARÍA MOLINER" prof_je_mm | grep -o '[0-9]*' | tail -1)
-JE_FLC_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email jefaturas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES FERNANDO LÁZARO CARRETER" prof_je_flc | grep -o '[0-9]*' | tail -1)
+JE_SG_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email iessguhuesca@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES Sierra de Guara" prof_je_sg | grep -o '[0-9]*' | tail -1)
+JE_SE_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email iessemteruel@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES SANTA EMERENCIANA" prof_je_se | grep -o '[0-9]*' | tail -1)
+JE_TM_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email iestiemposmodernos@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES TIEMPOS MODERNOS" prof_je_tm | grep -o '[0-9]*' | tail -1)
+JE_LE_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email cpilosenlaces@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "CPIFP LOS ENLACES" prof_je_le | grep -o '[0-9]*' | tail -1)
+JE_CA_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email cpifpcorona@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "CPIFP CORONA DE ARAGÓN" prof_je_ca | grep -o '[0-9]*' | tail -1)
+JE_PI_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email cpifppiramide@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "CPIFP PIRÁMIDE" prof_je_pi | grep -o '[0-9]*' | tail -1)
+JE_SB_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email ifpeteruel@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "CPIFP SAN BLAS" prof_je_sb | grep -o '[0-9]*' | tail -1)
+JE_MI_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email iesmirzaragoza@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES MIRALBUENO" prof_je_mi | grep -o '[0-9]*' | tail -1)
+JE_PS_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email iespsezaragoza@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES PABLO SERRANO" prof_je_ps | grep -o '[0-9]*' | tail -1)
+JE_BA_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email cpifpbajoaragon@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "CPIFP BAJO ARAGÓN" prof_je_ba | grep -o '[0-9]*' | tail -1)
+JE_RG_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email iesrgazaragoza@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES RÍO GÁLLEGO" prof_je_rg | grep -o '[0-9]*' | tail -1)
+JE_VT_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email iesvtteruel@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES VEGA DEL TURIA" prof_je_vt | grep -o '[0-9]*' | tail -1)
+JE_LB_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email ieslbuzaragoza@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES LUIS BUÑUEL" prof_je_lb | grep -o '[0-9]*' | tail -1)
+JE_MV_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email iesmvbarbastro@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES MARTÍNEZ VARGAS" prof_je_mv | grep -o '[0-9]*' | tail -1)
+JE_AV_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email iesavempace@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES AVEMPACE" prof_je_av | grep -o '[0-9]*' | tail -1)
+JE_MM_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email iesmmozaragoza@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES MARÍA MOLINER" prof_je_mm | grep -o '[0-9]*' | tail -1)
+JE_CD_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email info@campusdigitalfp.com --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "CFP CAMPUS DIGITAL" prof_je_cd | grep -o '[0-9]*' | tail -1)
+JE_FLC_USER_ID=$(moosh user-create --password "${MANAGER_PASSWORD}" --email iesutrillas@educa.aragon.es --digest 2 --city Aragón --country ES --firstname "Jefatura de estudios" --lastname "IES FERNANDO LÁZARO CARRETER" prof_je_flc | grep -o '[0-9]*' | tail -1)
 
 ADMIN2=$(moosh user-create --password "${MANAGER_PASSWORD}" --email fpdistancia@aragon.es --digest 2 --city Aragón --country ES --firstname "Administrador" --lastname "Campus Digital FP - Virtual" admin2 | grep -o '[0-9]*' | tail -1)
 ADMIN3=$(moosh user-create --password "${MANAGER_PASSWORD}" --email amcandialq@campusdigitalfp.com --digest 2 --city Aragón --country ES --firstname "Administrador" --lastname "Ana María Candial" admin3 | grep -o '[0-9]*' | tail -1)
@@ -86,6 +86,7 @@ ID_CATEGORY_app=$(moosh category-create -p 0 -v 1 -d "app" "NO BORRAR - APP MOVI
 
 ID_CATEGORY_sg=$(moosh category-create -p 0 -v 1 -d "22002521" "IES SIERRA DE GUARA" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_sg_ga=$(moosh category-create -p "${ID_CATEGORY_sg}" -v 1 -d "ADG201" "Gestión Administrativa" | grep -o '[0-9]*' | tail -1)
+ID_CATEGORY_sg_ceti=$(moosh category-create -p "${ID_CATEGORY_sg}" -v 1 -d "CESIFC01" "Ciberseguridad en Entornos de las Tecnologías de la Información" | grep -o '[0-9]*' | tail -1)
 
 ID_CATEGORY_se=$(moosh category-create -p 0 -v 1 -d "44003211" "IES SANTA EMERENCIANA" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_se_ga=$(moosh category-create -p "${ID_CATEGORY_se}" -v 1 -d "ADG201" "Gestión Administrativa" | grep -o '[0-9]*' | tail -1)
@@ -135,8 +136,6 @@ ID_CATEGORY_vt_es=$(moosh category-create -p "${ID_CATEGORY_vt}" -v 1 -d "SAN203
 ID_CATEGORY_lb=$(moosh category-create -p 0 -v 1 -d "50008460" "IES LUIS BUÑUEL" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_lb_apsd=$(moosh category-create -p "${ID_CATEGORY_lb}" -v 1 -d "SSC201" "Atención a Personas en situación de Dependencia" | grep -o '[0-9]*' | tail -1)
 
-ID_CATEGORY_mo=$(moosh category-create -p 0 -v 1 -d "22002491" "CPIFP MONTEARAGON" | grep -o '[0-9]*' | tail -1)
-ID_CATEGORY_mo_apsd=$(moosh category-create -p "${ID_CATEGORY_mo}" -v 1 -d "SSC201" "Atención a Personas en situación de Dependencia" | grep -o '[0-9]*' | tail -1)
 
 ID_CATEGORY_mv=$(moosh category-create -p 0 -v 1 -d "22004611" "IES MARTÍNEZ VARGAS" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_mv_ei=$(moosh category-create -p "${ID_CATEGORY_mv}" -v 1 -d "SSC302" "Educación Infantil (Formación Profesional)" | grep -o '[0-9]*' | tail -1)
@@ -157,6 +156,8 @@ ID_CATEGORY_cd_dam=$(moosh category-create -p "${ID_CATEGORY_cd}" -v 1 -d "IFC30
 ID_CATEGORY_cd_daw=$(moosh category-create -p "${ID_CATEGORY_cd}" -v 1 -d "IFC303" "Desarrollo de Aplicaciones WEB" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_cd_iabd=$(moosh category-create -p "${ID_CATEGORY_cd}" -v 1 -d "CESIFC02" "Inteligencia Artificial y Big Data" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_cd_ceti=$(moosh category-create -p "${ID_CATEGORY_cd}" -v 1 -d "CESIFC01" "Ciberseguridad en Entornos de las Tecnologías de la Información" | grep -o '[0-9]*' | tail -1)
+ID_CATEGORY_cd_rsn=$(moosh category-create -p "${ID_CATEGORY_cd}" -v 1 -d "CESIFC04" "Recursos y Servicios en la Nube" | grep -o '[0-9]*' | tail -1)
+ID_CATEGORY_cd_dalp=$(moosh category-create -p "${ID_CATEGORY_cd}" -v 1 -d "CESIFC05" "Desarrollo de Aplicaciones en Lenguaje Python" | grep -o '[0-9]*' | tail -1)
 
 #############################################################################################
 # A los usuarios jefes de estudios les cambio su campo personalizado para que tengan el valor correspondiente a su categoría
@@ -181,7 +182,6 @@ moosh sql-run "INSERT INTO mdl_user_info_data (userid, fieldid, data, dataformat
 moosh sql-run "INSERT INTO mdl_user_info_data (userid, fieldid, data, dataformat) values ($JE_RG_USER_ID, 1, $ID_CATEGORY_rg, 0)"
 moosh sql-run "INSERT INTO mdl_user_info_data (userid, fieldid, data, dataformat) values ($JE_VT_USER_ID, 1, $ID_CATEGORY_vt, 0)"
 moosh sql-run "INSERT INTO mdl_user_info_data (userid, fieldid, data, dataformat) values ($JE_LB_USER_ID, 1, $ID_CATEGORY_lb, 0)"
-moosh sql-run "INSERT INTO mdl_user_info_data (userid, fieldid, data, dataformat) values ($JE_MO_USER_ID, 1, $ID_CATEGORY_mo, 0)"
 moosh sql-run "INSERT INTO mdl_user_info_data (userid, fieldid, data, dataformat) values ($JE_MV_USER_ID, 1, $ID_CATEGORY_mv, 0)"
 moosh sql-run "INSERT INTO mdl_user_info_data (userid, fieldid, data, dataformat) values ($JE_AV_USER_ID, 1, $ID_CATEGORY_av, 0)"
 moosh sql-run "INSERT INTO mdl_user_info_data (userid, fieldid, data, dataformat) values ($JE_MM_USER_ID, 1, $ID_CATEGORY_mm, 0)"
@@ -198,7 +198,6 @@ moosh cohort-create -d "profesorado" -i profesorado -c "${ID_CATEGORY_general}" 
 moosh cohort-create -d "coordinacion" -i coordinacion -c "${ID_CATEGORY_general}" "coordinacion"
 moosh cohort-create -d "jefaturas" -i jefaturas -c "${ID_CATEGORY_general}" "jefaturas"
 
-moosh cohort-create -d "22002491-SSC201" -i 22002491-SSC201 -c "${ID_CATEGORY_mo}" "22002491-SSC201"
 moosh cohort-create -d "22002521-ADG201" -i 22002521-ADG201 -c "${ID_CATEGORY_sg}" "22002521-ADG201"
 moosh cohort-create -d "22004611-SSC302" -i 22004611-SSC302 -c "${ID_CATEGORY_mv}" "22004611-SSC302"
 moosh cohort-create -d "22010712-ELE202" -i 22010712-ELE202 -c "${ID_CATEGORY_pi}" "22010712-ELE202"
@@ -245,7 +244,6 @@ moosh cohort-enrol -u "${JE_BA_USER_ID}" "jefaturas"
 moosh cohort-enrol -u "${JE_RG_USER_ID}" "jefaturas"
 moosh cohort-enrol -u "${JE_VT_USER_ID}" "jefaturas"
 moosh cohort-enrol -u "${JE_LB_USER_ID}" "jefaturas"
-moosh cohort-enrol -u "${JE_MO_USER_ID}" "jefaturas"
 moosh cohort-enrol -u "${JE_MV_USER_ID}" "jefaturas"
 moosh cohort-enrol -u "${JE_AV_USER_ID}" "jefaturas"
 moosh cohort-enrol -u "${JE_MM_USER_ID}" "jefaturas"
@@ -404,10 +402,6 @@ do
             "50008460") # IES LUIS BUÑUEL
                 echo "****** Enrolling the user ${JE_LB_USER_ID} into the course_id ${COURSE_ID} with role jefatura-estudios"
                 moosh course-enrol -r jefatura-estudios -i "${COURSE_ID}" "${JE_LB_USER_ID}"
-                ;;
-            "22002491") # CPIFP MONTEARAGON
-                echo "****** Enrolling the user ${JE_MO_USER_ID} into the course_id ${COURSE_ID} with role jefatura-estudios"
-                moosh course-enrol -r jefatura-estudios -i "${COURSE_ID}" "${JE_MO_USER_ID}"
                 ;;
             "22004611") # IES MARTÍNEZ VARGAS
                 echo "****** Enrolling the user ${JE_MV_USER_ID} into the course_id ${COURSE_ID} with role jefatura-estudios"
