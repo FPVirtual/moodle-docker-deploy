@@ -1,3 +1,6 @@
+ID_CATEGORY_general,coordinacion,Sala de coordinación,1
+ID_CATEGORY_general,profesorado,Sala de profesorado,1
+ID_CATEGORY_general,ayuda,ayuda,1
 ID_CATEGORY_cd_smr,50020125-IFC201-627t,SMR - Coordinación - Tutoría,1
 ID_CATEGORY_cd_smr,50020125-IFC201-5351,SMR - Redes locales,1
 ID_CATEGORY_cd_smr,50020125-IFC201-5349,SMR - Aplicaciones ofimáticas,1
@@ -646,6 +649,3 @@ ID_CATEGORY_vt_es,44003235-SAN203-18034,ES - IPE I - Itinerario personal para la
 ID_CATEGORY_vt_es,44003235-SAN203-18032,ES - Inglés profesional,1
 ID_CATEGORY_vt_es,44003235-SAN203-18025,ES - Digitalización aplicada a los sectores productivos (GM),1
 ID_CATEGORY_vt_es,44003235-SAN203-20297,ES - Formación en Empresa u Organismo Equiparado,1
-ID_CATEGORY_general,coordinacion,Sala de coordinación,1
-ID_CATEGORY_general,profesorado,Sala de profesorado,1
-ID_CATEGORY_general,ayuda,ayuda,1
