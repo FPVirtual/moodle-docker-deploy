@@ -35,3 +35,5 @@ init-scripts/mbzs/
 /init-scripts/
 /*.log
 /procedimiento-inicio-curso/*.log
+/procedimiento-inicio-curso/codigos-nuevos/*.log
+/procedimiento-final-curso/logs
