@@ -33,7 +33,8 @@ procedimiento-final-curso/*.log
 soporte/
 init-scripts/mbzs/
 /init-scripts/
-/*.log
+*.log
 /procedimiento-inicio-curso/*.log
 /procedimiento-inicio-curso/codigos-nuevos/*.log
 /procedimiento-final-curso/logs
+/procedimiento-inicio-curso/matriculas-profesorado/*.log
