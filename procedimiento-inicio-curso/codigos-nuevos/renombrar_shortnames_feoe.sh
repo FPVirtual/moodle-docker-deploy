@@ -1,0 +1,37 @@
+#!/bin/bash
+# Comandos moosh (v1.34) para actualizar los shortname de los cursos de FEOE
+# (Formación en Empresa u Organismo Equiparado) de varios ciclos.
+# Generado a partir de codigos-feoes-viejos-y-nuevos-cursos.csv
+# Sintaxis: moosh course-config-set course <shortname_actual> shortname <shortname_nuevo>
+
+moosh -n course-config-set course 50020125-IFC201-feoe shortname 50020125-IFC201-20295
+moosh -n course-config-set course 50020125-IFC301-feoe shortname 50020125-IFC301-20306
+moosh -n course-config-set course 50020125-IFC302-feoe shortname 50020125-IFC302-20307
+moosh -n course-config-set course 50020125-IFC303-feoe shortname 50020125-IFC303-20308
+moosh -n course-config-set course 44010537-IFC302-feoe shortname 44010537-IFC302-20307
+moosh -n course-config-set course 50018829-ADG302-feoe shortname 50018829-ADG302-20300
+moosh -n course-config-set course 50018829-ADG301-feoe shortname 50018829-ADG301-20299
+moosh -n course-config-set course 50018829-QUI301-feoe shortname 50018829-QUI301-20311
+moosh -n course-config-set course 50010314-COM201-feoe shortname 50010314-COM201-20293
+moosh -n course-config-set course 50010314-COM301-feoe shortname 50010314-COM301-20301
+moosh -n course-config-set course 50010314-COM302-feoe shortname 50010314-COM302-20302
+moosh -n course-config-set course 50010314-COM303-feoe shortname 50010314-COM303-20303
+moosh -n course-config-set course 50010314-IMS302-feoe shortname 50010314-IMS302-20310
+moosh -n course-config-set course 50010314-IFC201-feoe shortname 50010314-IFC201-20295
+moosh -n course-config-set course 50010314-IFC303-feoe shortname 50010314-IFC303-20308
+moosh -n course-config-set course 22010712-ELE202-feoe shortname 22010712-ELE202-20294
+moosh -n course-config-set course 44003028-SEA301-feoe shortname 44003028-SEA301-20312
+moosh -n course-config-set course 50009348-SSC302-feoe shortname 50009348-SSC302-20313
+moosh -n course-config-set course 44004550-IMA302-feoe shortname 44004550-IMA302-20309
+moosh -n course-config-set course 50008460-SSC201-feoe shortname 50008460-SSC201-20298
+moosh -n course-config-set course 50008642-SSC303-feoe shortname 50008642-SSC303-20314
+moosh -n course-config-set course 22004611-SSC302-feoe shortname 22004611-SSC302-20313
+moosh -n course-config-set course 50010156-HOT301-feoe shortname 50010156-HOT301-20305
+moosh -n course-config-set course 50010144-IFC301-feoe shortname 50010144-IFC301-20306
+moosh -n course-config-set course 50009567-SAN202-feoe shortname 50009567-SAN202-20296
+moosh -n course-config-set course 50009567-SAN203-feoe shortname 50009567-SAN203-20297
+moosh -n course-config-set course 50009567-ELE304-feoe shortname 50009567-ELE304-20304
+moosh -n course-config-set course 44003211-ADG201-feoe shortname 44003211-ADG201-20292
+moosh -n course-config-set course 22002521-ADG201-feoe shortname 22002521-ADG201-20292
+moosh -n course-config-set course 50010511-ADG201-feoe shortname 50010511-ADG201-20292
+moosh -n course-config-set course 44003235-SAN203-feoe shortname 44003235-SAN203-20297
