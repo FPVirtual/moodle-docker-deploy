@@ -1,9 +1,3 @@
-#!/bin/bash
-# Comandos moosh (v1.34) para actualizar los shortname de los cursos de FEOE
-# (Formación en Empresa u Organismo Equiparado) de varios ciclos.
-# Generado a partir de codigos-feoes-viejos-y-nuevos-cursos.csv
-# Sintaxis: moosh course-config-set course <shortname_actual> shortname <shortname_nuevo>
-
 moosh -n course-config-set course 50020125-IFC201-feoe shortname 50020125-IFC201-20295
 moosh -n course-config-set course 50020125-IFC301-feoe shortname 50020125-IFC301-20306
 moosh -n course-config-set course 50020125-IFC302-feoe shortname 50020125-IFC302-20307
