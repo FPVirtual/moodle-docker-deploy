@@ -1,1 +1,0 @@
-echo >&2 "AVISO: ¡No se importan cursos ni categorías!"
