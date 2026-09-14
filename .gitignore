@@ -38,3 +38,4 @@ init-scripts/mbzs/
 /procedimiento-inicio-curso/codigos-nuevos/*.log
 /procedimiento-final-curso/logs
 /procedimiento-inicio-curso/matriculas-profesorado/*.log
+/procedimiento-inicio-curso/matriculas-profesorado/*.txt
