@@ -1,0 +1,11 @@
+id,dni,id_ciclo,id_modulo,id_centro,created_at,updated_at,username,shortname_course,motivo
+1362,72982137d,ADG201,14665,50010511,2026-09-08 05:15:59,2026-09-08 05:15:59,prof72982137d,50010511-ADG201-14665,Curso no existe: el módulo 14665 no existe para el centro 50010511 (ADG201). Sí existe 14665 en otros centros (44003211 y 22002521). Revisar si el id_centro del CSV es correcto para este profesor.
+1615,12775138h,CESIFC02,19128,50020125,2026-09-08 12:19:41,2026-09-08 12:19:41,prof12775138h,50020125-CESIFC02-19128,Curso no existe: el módulo 19128 no existe en el ciclo 50020125-CESIFC02. Revisar el id_modulo de origen.
+1700,25189522z,COM301,15407,50010314,2026-09-10 17:30:18,2026-09-10 17:30:18,prof25189522z,50010314-COM301-15407,Curso no existe: el módulo 15407 no existe en 50010314-COM301. Revisar el id_modulo de origen.
+1701,17220733n,COM302,15422,50010314,2026-09-10 17:30:55,2026-09-10 17:30:55,prof17220733n,50010314-COM302-15422,Curso no existe: el módulo 15422 no existe en 50010314-COM302. Revisar el id_modulo de origen.
+1705,17220733n,COM302,15422,50010314,2026-09-10 17:35:02,2026-09-10 17:35:02,prof17220733n,50010314-COM302-15422,Curso no existe: el módulo 15422 no existe en 50010314-COM302 (fila duplicada de la 1701 en el CSV).
+1702,25185726j,COM302,15426,50010314,2026-09-10 17:33:42,2026-09-10 17:33:42,prof25185726j,50010314-COM302-15426,Curso no existe: el módulo 15426 no existe en 50010314-COM302. Revisar el id_modulo de origen.
+1703,72985724p,COM302,15437,50010314,2026-09-10 17:34:37,2026-09-10 17:34:37,prof72985724p,50010314-COM302-15437,Usuario no existe en Moodle: prof72985724p no está creado. El curso 50010314-COM302-15437 sí existe.
+1704,72985724p,COM302,15443,50010314,2026-09-10 17:34:49,2026-09-10 17:34:49,prof72985724p,50010314-COM302-15443,Usuario no existe en Moodle: prof72985724p no está creado. El curso 50010314-COM302-15443 sí existe.
+1707,25185726j,COM302,15416,50010314,2026-09-10 17:36:02,2026-09-10 17:36:02,prof25185726j,50010314-COM302-15416,Usuario no existe en Moodle: prof25185726j no está creado. El curso 50010314-COM302-15416 sí existe.
+1708,76919853x,COM302,15409,50010314,2026-09-10 17:36:18,2026-09-10 17:36:18,prof76919853x,50010314-COM302-15409,Curso no existe: el módulo 15409 no existe en 50010314-COM302. Revisar el id_modulo de origen.

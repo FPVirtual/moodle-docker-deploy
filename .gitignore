@@ -39,3 +39,5 @@ init-scripts/mbzs/
 /procedimiento-final-curso/logs
 /procedimiento-inicio-curso/matriculas-profesorado/*.log
 /procedimiento-inicio-curso/matriculas-profesorado/*.txt
+/procedimiento-inicio-curso/matriculas-profesorado/matriculas-realizadas.tsv
+/template-apache-3.7.6/
