@@ -19,16 +19,26 @@
 # (Esto reproduce exactamente lo que había en la columna "comando moosh", pero
 #  sin depender de las columnas 8, 9 ni 10.)
 #
+# Si no se indica --csv, el propio script obtiene los últimos datos
+# directamente de la tabla "docente_modulo_ciclo" de la BD de fp-app (a
+# través del contenedor --db-container, por defecto "fp-app", que tiene las
+# credenciales de la BD en sus variables de entorno) y los guarda en un CSV
+# nuevo llamado docente_modulo_ciclo_AAAA_MM_DD_HH_MM_SS.csv, que es el que se
+# usa para la matrícula.
+#
 # Este script:
-#   1. Construye el comando moosh de cada fila a partir de las columnas 1-7.
-#   2. Lo ejecuta con moosh dentro del contenedor Docker de Moodle.
-#   3. Guarda TODA la salida (stdout + stderr) de cada comando en un fichero
+#   1. Obtiene (salvo que se indique --csv) los últimos datos de
+#      docente_modulo_ciclo desde el contenedor de fp-app y los guarda en un
+#      CSV nuevo con marca de tiempo.
+#   2. Construye el comando moosh de cada fila a partir de las columnas 1-7.
+#   3. Lo ejecuta con moosh dentro del contenedor Docker de Moodle.
+#   4. Guarda TODA la salida (stdout + stderr) de cada comando en un fichero
 #      de log con marca de tiempo.
-#   4. Al terminar genera un RESUMEN con las matrículas que se han realizado
+#   5. Al terminar genera un RESUMEN con las matrículas que se han realizado
 #      correctamente y las que han fallado (con el motivo del fallo), tanto por
 #      pantalla como en un fichero de resumen aparte.
 #
-# NO modifica el CSV original.
+# NO modifica el CSV original (si se indica --csv) ni la tabla docente_modulo_ciclo.
 # =============================================================================
 set -uo pipefail
 
@@ -43,7 +53,8 @@ RESUMEN_FILE="${SCRIPT_DIR}/${SCRIPT_NAME}_${STAMP}_resumen.txt"
 # Valores por defecto (mismo estilo que el resto de scripts del repo).
 # ---------------------------------------------------------------------------
 CONTAINER="wwwfpvirtualaragones-moodle-1"
-CSV="${SCRIPT_DIR}/matricular_profes_moodle - matriculas 26 27.csv"
+DB_CONTAINER="fp-app"   # contenedor de fp-app desde el que se lee docente_modulo_ciclo
+CSV=""                  # vacío => se genera automáticamente desde docente_modulo_ciclo
 DRY_RUN=false
 USE_DOCKER=true      # false => ejecuta 'moosh' directamente (script ya dentro del contenedor)
 LIMIT=0              # 0 = sin límite; N = procesa solo las N primeras filas (para pruebas)
@@ -75,8 +86,17 @@ OPCIONES:
   --container NOMBRE   Nombre del contenedor Docker de Moodle.
                         Por defecto: ${CONTAINER}
 
-  --csv RUTA            Ruta al CSV de matrículas.
-                        Por defecto: ${CSV}
+  --csv RUTA            Ruta a un CSV de matrículas ya existente (columnas
+                        id,dni,id_ciclo,id_modulo,id_centro,created_at,updated_at).
+                        Si se omite (comportamiento por defecto), se obtienen
+                        los últimos datos de docente_modulo_ciclo desde
+                        --db-container y se genera un CSV nuevo llamado
+                        docente_modulo_ciclo_AAAA_MM_DD_HH_MM_SS.csv.
+
+  --db-container NOMBRE Contenedor Docker de fp-app desde el que se leen los
+                        últimos datos de docente_modulo_ciclo cuando no se
+                        indica --csv.
+                        Por defecto: ${DB_CONTAINER}
 
   --no-docker           Ejecuta 'moosh' directamente (sin docker exec),
                         útil si ya estás dentro del contenedor.
@@ -109,6 +129,7 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         --container) CONTAINER="$2"; shift 2 ;;
         --csv)       CSV="$2"; shift 2 ;;
+        --db-container) DB_CONTAINER="$2"; shift 2 ;;
         --no-docker) USE_DOCKER=false; shift ;;
         --limit)     LIMIT="$2"; shift 2 ;;
         --state)     STATE_FILE="$2"; shift 2 ;;
@@ -133,6 +154,85 @@ run_moosh() {
 }
 
 # ---------------------------------------------------------------------------
+# obtener_matriculas_editingteacher_moodle(): consulta directamente en la
+# BD de Moodle (a través de "moosh php-eval", usando la propia API $DB de
+# Moodle) qué usuarios tienen YA el rol editingteacher en qué cursos,
+# independientemente de cómo se hayan matriculado. Devuelve por stdout
+# líneas "usuario<TAB>curso".
+# ---------------------------------------------------------------------------
+obtener_matriculas_editingteacher_moodle() {
+    local php_code
+    php_code="$(cat <<'PHP'
+global $DB;
+$sql = "SELECT u.username AS username, c.shortname AS shortname
+        FROM {role_assignments} ra
+        JOIN {context} cx ON cx.id = ra.contextid AND cx.contextlevel = 50
+        JOIN {course} c ON c.id = cx.instanceid
+        JOIN {user} u ON u.id = ra.userid
+        JOIN {role} r ON r.id = ra.roleid AND r.shortname = 'editingteacher'
+        WHERE u.deleted = 0";
+$rs = $DB->get_recordset_sql($sql);
+foreach ($rs as $r) {
+    echo $r->username . "\t" . $r->shortname . "\n";
+}
+$rs->close();
+PHP
+)"
+    run_moosh -n php-eval "$php_code"
+}
+
+# ---------------------------------------------------------------------------
+# obtener_docente_modulo_ciclo(): consulta la tabla docente_modulo_ciclo de
+# la BD de fp-app (a través de "docker exec" en DB_CONTAINER, usando las
+# credenciales que ya tiene ese contenedor en sus variables de entorno
+# DB_HOST/DB_PORT/DB_DATABASE/DB_USERNAME/DB_PASSWORD) y vuelca el resultado
+# como CSV en la ruta indicada.
+# ---------------------------------------------------------------------------
+obtener_docente_modulo_ciclo() {
+    local destino="$1"
+
+    docker exec -i "$DB_CONTAINER" php > "$destino" <<'PHP'
+<?php
+$pdo = new PDO(
+    "mysql:host=" . getenv("DB_HOST") . ";port=" . getenv("DB_PORT") . ";dbname=" . getenv("DB_DATABASE") . ";charset=utf8mb4",
+    getenv("DB_USERNAME"),
+    getenv("DB_PASSWORD")
+);
+$stmt = $pdo->query(
+    "SELECT id, dni, id_ciclo, id_modulo, id_centro, created_at, updated_at FROM docente_modulo_ciclo ORDER BY id"
+);
+$out = fopen("php://stdout", "w");
+fputcsv($out, ["id", "dni", "id_ciclo", "id_modulo", "id_centro", "created_at", "updated_at"]);
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    fputcsv($out, $row);
+}
+fclose($out);
+PHP
+}
+
+# ---------------------------------------------------------------------------
+# Obtención del CSV de partida.
+#
+# Si no se ha indicado --csv, se obtienen los últimos datos de
+# docente_modulo_ciclo desde el contenedor de fp-app y se guardan en un CSV
+# nuevo con marca de tiempo, que pasa a ser el CSV de esta ejecución.
+# ---------------------------------------------------------------------------
+if [[ -z "$CSV" ]]; then
+    DB_STAMP="$(date '+%Y_%m_%d_%H_%M_%S')"
+    CSV="${SCRIPT_DIR}/docente_modulo_ciclo_${DB_STAMP}.csv"
+
+    log INFO "Obteniendo los últimos datos de docente_modulo_ciclo desde el contenedor '${DB_CONTAINER}'..."
+
+    if ! obtener_docente_modulo_ciclo "$CSV"; then
+        log ERROR "No se han podido obtener los datos de docente_modulo_ciclo desde el contenedor '${DB_CONTAINER}'."
+        rm -f "$CSV"
+        exit 1
+    fi
+
+    log INFO "CSV generado: $CSV ($(( $(wc -l < "$CSV") - 1 )) filas)"
+fi
+
+# ---------------------------------------------------------------------------
 # Comprobaciones previas.
 # ---------------------------------------------------------------------------
 if [[ ! -f "$CSV" ]]; then
@@ -142,7 +242,10 @@ fi
 
 # ---------------------------------------------------------------------------
 # Fichero de estado: qué combinaciones usuario+curso ya se han matriculado
-# en ejecuciones anteriores (real, no dry-run), para no repetirlas.
+# en ejecuciones anteriores (real, no dry-run) DE ESTE SCRIPT, para no
+# repetirlas. Es un complemento a la consulta en vivo a Moodle de más abajo
+# (que es la fuente de verdad real), útil sobre todo si en algún momento no
+# se puede consultar Moodle directamente.
 #
 # Si el fichero de estado todavía no existe, se genera sembrándolo a partir
 # de los resúmenes ("*_resumen.txt") de ejecuciones reales anteriores de
@@ -168,6 +271,26 @@ while IFS=$'\t' read -r su sc; do
     [[ -z "$su" ]] && continue
     ENROLLED["${su}|${sc}"]=1
 done < "$STATE_FILE"
+
+# ---------------------------------------------------------------------------
+# Además del fichero de estado (que solo conoce lo que ha hecho ESTE script),
+# se consulta directamente Moodle para saber qué matrículas de profesorado
+# (rol editingteacher) existen YA en la plataforma, se hayan hecho como sea
+# (matrícula manual, otro script, importación, etc.). Así no se repite el
+# comando moosh sobre algo que ya está matriculado.
+# ---------------------------------------------------------------------------
+log INFO "Consultando en Moodle las matrículas de profesorado (editingteacher) ya existentes..."
+MOODLE_ENROLADOS=0
+if moodle_actual="$(obtener_matriculas_editingteacher_moodle)"; then
+    while IFS=$'\t' read -r su sc; do
+        [[ -z "$su" || -z "$sc" ]] && continue
+        ENROLLED["${su}|${sc}"]=1
+        MOODLE_ENROLADOS=$((MOODLE_ENROLADOS + 1))
+    done <<< "$moodle_actual"
+    log INFO "Matrículas editingteacher ya existentes en Moodle: ${MOODLE_ENROLADOS}"
+else
+    log WARN "No se ha podido consultar Moodle para ver las matrículas ya existentes; se usará solo el fichero de estado ($STATE_FILE)."
+fi
 
 START_TS=$(date +%s)
 log INFO "================================================================"

@@ -40,5 +40,6 @@ init-scripts/mbzs/
 /procedimiento-inicio-curso/matriculas-profesorado/*.log
 /procedimiento-inicio-curso/matriculas-profesorado/*.txt
 /procedimiento-inicio-curso/matriculas-profesorado/matriculas-realizadas.tsv
+/procedimiento-inicio-curso/matriculas-profesorado/docente_modulo_ciclo_*.csv
 /template-apache-3.7.6/
 .claude/
