@@ -273,6 +273,12 @@ moosh -n cohort-create -d "50018829-ADG301" -i 50018829-ADG301 -c "${ID_CATEGORY
 moosh -n cohort-create -d "50018829-ADG302" -i 50018829-ADG302 -c "${ID_CATEGORY_ca}" "50018829-ADG302"
 moosh -n cohort-create -d "50018829-QUI301" -i 50018829-QUI301 -c "${ID_CATEGORY_ca}" "50018829-QUI301"
 moosh -n cohort-create -d "44004550-IMA302" -i 44004550-IMA302 -c "${ID_CATEGORY_flc}" "44004550-IMA302"
+moosh -n cohort-create -d "50020125-CESIFC01" -i 50020125-CESIFC01 -c "${ID_CATEGORY_cd}" "50020125-CESIFC01"
+moosh -n cohort-create -d "50020125-CESIFC02" -i 50020125-CESIFC02 -c "${ID_CATEGORY_cd}" "50020125-CESIFC02"
+moosh -n cohort-create -d "50020125-CESIFC04" -i 50020125-CESIFC04 -c "${ID_CATEGORY_cd}" "50020125-CESIFC04"
+moosh -n cohort-create -d "50020125-IFC301" -i 50020125-IFC301 -c "${ID_CATEGORY_cd}" "50020125-IFC301"
+moosh -n cohort-create -d "50020125-IFC302" -i 50020125-IFC302 -c "${ID_CATEGORY_cd}" "50020125-IFC302"
+moosh -n cohort-create -d "50020125-IFC303" -i 50020125-IFC303 -c "${ID_CATEGORY_cd}" "50020125-IFC303"
 
 #############################################################################################
 # Añado a la cohorte de jefatura de estudios a los diferentes usuarios de jefes de estudios
