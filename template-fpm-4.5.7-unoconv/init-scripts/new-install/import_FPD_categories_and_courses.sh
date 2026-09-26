@@ -198,6 +198,7 @@ moosh cohort-create -d "jefaturas" -i jefaturas -c "${ID_CATEGORY_general}" "jef
 
 moosh cohort-create -d "22002491-SSC201" -i 22002491-SSC201 -c "${ID_CATEGORY_mo}" "22002491-SSC201"
 moosh cohort-create -d "22002521-ADG201" -i 22002521-ADG201 -c "${ID_CATEGORY_sg}" "22002521-ADG201"
+moosh cohort-create -d "22002521-CESIFC01" -i 22002521-CESIFC01 -c "${ID_CATEGORY_sg}" "22002521-CESIFC01"
 moosh cohort-create -d "22004611-SSC302" -i 22004611-SSC302 -c "${ID_CATEGORY_mv}" "22004611-SSC302"
 moosh cohort-create -d "22010712-ELE202" -i 22010712-ELE202 -c "${ID_CATEGORY_pi}" "22010712-ELE202"
 moosh cohort-create -d "44003028-SEA301" -i 44003028-SEA301 -c "${ID_CATEGORY_sb}" "44003028-SEA301"
@@ -226,6 +227,8 @@ moosh cohort-create -d "50018829-QUI301" -i 50018829-QUI301 -c "${ID_CATEGORY_ca
 moosh cohort-create -d "50020125-CESIFC01" -i 50020125-CESIFC01 -c "${ID_CATEGORY_cd}" "50020125-CESIFC01"
 moosh cohort-create -d "50020125-CESIFC02" -i 50020125-CESIFC02 -c "${ID_CATEGORY_cd}" "50020125-CESIFC02"
 moosh cohort-create -d "50020125-CESIFC04" -i 50020125-CESIFC04 -c "${ID_CATEGORY_cd}" "50020125-CESIFC04"
+moosh cohort-create -d "50020125-CESIFC05" -i 50020125-CESIFC05 -c "${ID_CATEGORY_cd}" "50020125-CESIFC05"
+moosh cohort-create -d "50020125-IFC201" -i 50020125-IFC201 -c "${ID_CATEGORY_cd}" "50020125-IFC201"
 moosh cohort-create -d "50020125-IFC301" -i 50020125-IFC301 -c "${ID_CATEGORY_cd}" "50020125-IFC301"
 moosh cohort-create -d "50020125-IFC302" -i 50020125-IFC302 -c "${ID_CATEGORY_cd}" "50020125-IFC302"
 moosh cohort-create -d "50020125-IFC303" -i 50020125-IFC303 -c "${ID_CATEGORY_cd}" "50020125-IFC303"
