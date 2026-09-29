@@ -1,0 +1,30 @@
+diff -ru a/blocks/sharing_cart/classes/task/asynchronous_backup_task.php b/blocks/sharing_cart/classes/task/asynchronous_backup_task.php
+--- a/blocks/sharing_cart/classes/task/asynchronous_backup_task.php
++++ b/blocks/sharing_cart/classes/task/asynchronous_backup_task.php
+@@ -118,8 +118,9 @@
+                 // Execute the backup.
+                 $bc->execute_plan();
+ 
+-                // Send message to user if enabled.
+-                $messageenabled = (bool)get_config('backup', 'backup_async_message_users');
++                // FPVirtual: la bolsa de recursos no envía el aviso por email de copia/restauración
++                // asíncrona (sí lo siguen enviando las copias y restauraciones de curso del núcleo).
++                $messageenabled = false;
+                 if ($messageenabled && $bc->get_status() == \backup::STATUS_FINISHED_OK) {
+                     $asynchelper = new async_helper('backup', $backupid);
+                     $asynchelper->send_message();
+diff -ru a/blocks/sharing_cart/classes/task/asynchronous_restore_task.php b/blocks/sharing_cart/classes/task/asynchronous_restore_task.php
+--- a/blocks/sharing_cart/classes/task/asynchronous_restore_task.php
++++ b/blocks/sharing_cart/classes/task/asynchronous_restore_task.php
+@@ -77,8 +77,9 @@
+ 
+                 $this->after_restore_finished_hook($rc);
+ 
+-                // Send message to user if enabled.
+-                $messageenabled = (bool)get_config('backup', 'backup_async_message_users');
++                // FPVirtual: la bolsa de recursos no envía el aviso por email de copia/restauración
++                // asíncrona (sí lo siguen enviando las copias y restauraciones de curso del núcleo).
++                $messageenabled = false;
+                 if ($messageenabled && $rc->get_status() == \backup::STATUS_FINISHED_OK) {
+                     $asynchelper = new async_helper('restore', $restoreid);
+                     $asynchelper->send_message();

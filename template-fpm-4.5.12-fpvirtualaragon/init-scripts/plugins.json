@@ -255,6 +255,18 @@
       "install_types": ["new-install", "upgrade"]
     },
     {
+      "name": "block_sharing_cart",
+      "component": "block_sharing_cart",
+      "description": "Bolsa de recursos para copiar actividades entre cursos (parche patches/fpd/sharing-cart-sin-email-async.patch)",
+      "category": "block",
+      "moodle_path": "blocks/sharing_cart",
+      "install_method": "moosh",
+      "default_enabled": true,
+      "has_postinstall_actions": false,
+      "school_types": ["FPD"],
+      "install_types": ["new-install", "upgrade"]
+    },
+    {
       "name": "report_coursestats_v2",
       "component": "report_coursestats_v2",
       "description": "Estadisticas de cursos v2",
