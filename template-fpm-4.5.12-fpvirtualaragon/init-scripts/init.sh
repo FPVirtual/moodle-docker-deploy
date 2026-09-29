@@ -30,4 +30,7 @@ do
 	fi
 done
 
+# Parches sobre el código de Moodle (moodle-code se regenera en cada upgrade)
+/init-scripts/lib/apply-patches.sh
+
 echo "All done"

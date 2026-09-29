@@ -1,0 +1,28 @@
+diff -ru a/backup/import.php b/backup/import.php
+--- a/backup/import.php
++++ b/backup/import.php
+@@ -50,6 +50,9 @@
+ require_login($course);
+ // Must hold restoretargetimport in the current course
+ require_capability('moodle/restore:restoretargetimport', $context);
++// FPVirtual: restoretargetimport se concede al profesorado solo para poder duplicar;
++// importar exige además backupcourse (prohibido al profesorado).
++require_capability('moodle/backup:backupcourse', $context);
+ 
+ // Set up the page
+ $PAGE->set_title($course->shortname . ': ' . get_string('import'));
+diff -ru a/course/lib.php b/course/lib.php
+--- a/course/lib.php
++++ b/course/lib.php
+@@ -3749,7 +3749,10 @@
+         $options->gradebook = has_capability('moodle/grade:manage', $context);
+         $options->outcomes = !empty($CFG->enableoutcomes) && has_capability('moodle/course:update', $context);
+         $options->badges = !empty($CFG->enablebadges);
+-        $options->import = has_capability('moodle/restore:restoretargetimport', $context);
++        // FPVirtual: restoretargetimport se concede al profesorado solo para poder duplicar;
++        // el enlace a "Importar" exige además backupcourse (prohibido al profesorado).
++        $options->import = has_capability('moodle/restore:restoretargetimport', $context)
++            && has_capability('moodle/backup:backupcourse', $context);
+         $options->reset = has_capability('moodle/course:reset', $context);
+         $options->roles = has_capability('moodle/role:switchroles', $context);
+     } else {
