@@ -114,3 +114,63 @@ Para centros FPD, el plugin `local_educaaragon` se configura automáticamente du
 3. Añadir la variable `PLUGIN_<NOMBRE>` a `env-sample` si se quiere controlar por `.env`.
 4. Reconstruir/actualizar las instancias afectadas.
 
+
+## Ficheros PHP modificados en producción (www.fpvirtualaragon.es)
+
+Fecha: septiembre de 2026 (Moodle 4.5.12)
+
+Cambios hechos a mano sobre `www.fpvirtualaragon.es/moodle-code` que se apartan del código original de Moodle o de los plugins. **Si se redespliega desde cero o se hace un upgrade, hay que revisar que siguen aplicados.** Los marcados como *automático* se reaplican con la plantilla; el resto hay que rehacerlos a mano.
+
+Para comprobar qué ficheros del núcleo difieren del original, dentro del contenedor:
+
+```bash
+cd /usr/src/moodle && find . -name "*.php" -type f | while read f; do
+  cmp -s "$f" "/var/www/html/$f" || echo "MODIFICADO $f"; done
+```
+
+### Núcleo de Moodle (sobrescritos)
+
+| Fichero | Cambio | Motivo | Reaplicación |
+|---|---|---|---|
+| `course/lib.php` (`course_get_user_administration_options`, ~l. 3752) | El enlace «Importar» exige además `moodle/backup:backupcourse` | Al profesorado se le da `backuptargetimport`/`restoretargetimport` solo para poder **duplicar** recursos y secciones, no para importar | Automático: `init-scripts/patches/fpd/import-requiere-backupcourse.patch` |
+| `backup/import.php` (~l. 52) | `require_capability('moodle/backup:backupcourse')` al entrar en la página | Igual que el anterior, bloquea el acceso directo por URL | Automático: mismo parche |
+
+### Plugins (sobrescritos)
+
+| Fichero | Cambio | Motivo | Reaplicación |
+|---|---|---|---|
+| `blocks/sharing_cart/classes/task/asynchronous_backup_task.php` (~l. 121) | `$messageenabled = false` | La bolsa de recursos no envía el email de «copia de seguridad completada» al copiar un recurso. Las copias/restauraciones de curso del núcleo siguen avisando (`backup_async_message_users` sigue activo) | Automático *si el plugin está instalado*: `init-scripts/patches/fpd/sharing-cart-sin-email-async.patch` |
+| `blocks/sharing_cart/classes/task/asynchronous_restore_task.php` (~l. 80) | `$messageenabled = false` | Igual que el anterior, al pegar | Automático, mismo parche |
+
+`block_sharing_cart` se instala desde `plugins.json` (solo FPD) con `moosh`, que elige la versión más reciente compatible con el Moodle del sitio: en 4.5 es la 5.1 (2026020901), la que tiene www. La 5.2 exige Moodle 5.2 y ya trae su propio ajuste `block_sharing_cart | backup_async_message_users`, así que al pasar a Moodle 5.2 el parche de email dejará de encajar y habrá que sustituirlo por ese ajuste.
+
+Los parches los aplica `init-scripts/lib/apply-patches.sh` (llamado desde `init.sh`) solo en sitios `SCHOOL_TYPE=FPD`. Es idempotente; si un parche no encaja con una versión nueva de Moodle o del plugin, deja un `WARNING` en el log del contenedor y no toca nada: en ese caso hay que regenerar el `.patch`.
+
+### Código añadido que no gestiona la plantilla
+
+| Ruta | Qué es | Cómo restaurarlo |
+|---|---|---|
+| `private-reports/` (`docentes.php`, `inspeccion.php`, `jefaturas.php`, `mensajeria.php`) | Informes propios, repositorio https://github.com/FPVirtual/private-reports | Clonar el repositorio y copiar los `.php` **sin `.git`** (nginx no bloquea ficheros ocultos) a `moodle-code/private-reports`, propietario `www-data` |
+| `soporte/` (`index.php`, `action.php`, `captcha.php`, `upload.php`, `secret.php`, `log.txt`) | Formulario de soporte, repositorio https://github.com/FPVirtual/formulario-soporte (en www es un clon git) | Clonar el repositorio en `moodle-code/soporte`, propietario `www-data`. **Guardar antes `secret.php`** (credenciales, no está en el repositorio) y, si se quiere conservar, `log.txt` (histórico de solicitudes, con datos personales) |
+| `faqs/` (`faq3`…`faq9`, `login.png`, `google*.png`, `forgot-password.png`, `recordar-pass.png`) | Imágenes de las FAQ de la pantalla principal | Son idénticas a `init-scripts/themes/fpdist/faqs/` de la plantilla: copiar su **contenido** a `moodle-code/faqs`, propietario `www-data` |
+
+Aunque `new-install/theme.sh` y `upgrade/theme.sh` intentan copiar `soporte/` y `faqs/`, **no se puede confiar en ellos**, así que hay que revisar ambas carpetas tras un redespliegue:
+
+- `init-scripts/themes/fpdist/soporte/` no existe en la plantilla, así que la copia de `soporte` falla.
+- Si existiera, se copiaría `secret-sample.php` encima de `secret.php`, perdiendo las credenciales.
+- `mkdir …/faqs/` seguido de `cp -R …/fpdist/faqs /var/www/html/faqs` crea `faqs/faqs/` (anidado) en lugar de copiar el contenido; lo mismo pasaría con `soporte`. En www están sin anidar porque se colocaron a mano.
+
+**nginx**: `moodle-code` se sirve tal cual, así que `soporte/log.txt` (datos personales) y cualquier `.git` (de `soporte`, `private-reports` o plugins instalados con `git_clone`) eran descargables. Desde el 29/09/2026 el `nginx/default.conf` de la plantilla, de www, pre y curso2526 devuelve 404 para rutas que empiezan por `.` (salvo `.well-known`) y para `soporte/*.txt|*.log`. Tras un redespliegue, comprobar que siguen bloqueadas:
+
+```bash
+for u in /soporte/log.txt /soporte/.git/HEAD /mod/googlemeet/.git/HEAD; do
+  curl -s -o /dev/null -w "$u %{http_code}\n" https://www.fpvirtualaragon.es$u; done   # debe dar 404
+```
+
+### Configuración en base de datos relacionada
+
+No son ficheros, pero los parches anteriores dependen de ella. Se aplicó a mano en www y pre (contexto de sistema) y **no está en la plantilla**:
+
+- `editingteacher`: permitido `moodle/backup:backupactivity`, `moodle/restore:restoreactivity`, `moodle/backup:backuptargetimport`, `moodle/restore:restoretargetimport`; prohibido `moodle/backup:backupcourse`, `backupsection`, `configure`, `downloadfile`, `moodle/restore:restorecourse`, `restoresection`, `uploadfile`.
+- `teacher`: prohibido `moodle/backup:backupcourse`, `backupsection`, `backuptargetimport`, `downloadfile`, `moodle/restore:restorecourse`, `restoresection`, `restoretargetimport`, `uploadfile`.
+
