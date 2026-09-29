@@ -181,6 +181,18 @@
       "install_types": ["new-install", "upgrade"]
     },
     {
+      "name": "tiny_fontcolor",
+      "component": "tiny_fontcolor",
+      "description": "Plugin TinyMCE para color de texto y de fondo",
+      "category": "tiny",
+      "moodle_path": "lib/editor/tiny/plugins/fontcolor",
+      "install_method": "moosh",
+      "default_enabled": true,
+      "has_postinstall_actions": false,
+      "school_types": ["all"],
+      "install_types": ["new-install", "upgrade"]
+    },
+    {
       "name": "qtype_gapfill",
       "component": "qtype_gapfill",
       "description": "Tipo de pregunta rellenar huecos",
