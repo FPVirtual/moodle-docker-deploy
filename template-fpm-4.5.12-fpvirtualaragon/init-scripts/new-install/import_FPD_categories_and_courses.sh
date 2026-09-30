@@ -488,4 +488,9 @@ do
     fi
 done
 
+# Los cursos y categorías se crean en un orden fijo para que sus IDs no cambien;
+# después se ordenan alfabéticamente (solo cambia sortorder, no los IDs)
+echo "***** Sorting categories, subcategories and courses alphabetically..."
+php /init-scripts/new-install/sort_categories_and_courses.php
+
 echo >&2 "... importing categories and courses. Done!"

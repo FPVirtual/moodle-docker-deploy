@@ -65,8 +65,8 @@ ID_CATEGORY_cd_daw,50020125-IFC303-5090,DAW - Formación en centros de trabajo L
 ID_CATEGORY_cd_daw,50020125-IFC303-5087,DAW - Proyecto de desarrollo de aplicaciones web LOE,1
 ID_CATEGORY_cd_daw,50020125-IFC303-5086,DAW - Diseño de interfaces web,1
 ID_CATEGORY_cd_daw,50020125-IFC303-5085,DAW - Despliegue de aplicaciones web,1
-ID_CATEGORY_cd_daw,50020125-IFC303-5084,DAW - Desarrollo web  en entorno servidor,1
-ID_CATEGORY_cd_daw,50020125-IFC303-5083,DAW - Desarrollo web  en entorno cliente,1
+ID_CATEGORY_cd_daw,50020125-IFC303-5084,DAW - Desarrollo web en entorno servidor,1
+ID_CATEGORY_cd_daw,50020125-IFC303-5083,DAW - Desarrollo web en entorno cliente,1
 ID_CATEGORY_cd_daw,50020125-IFC303-16835,DAW - Sostenibilidad aplicada al sistema productivo,1
 ID_CATEGORY_cd_daw,50020125-IFC303-16833,DAW - Proyecto intermodular de desarrollo de aplicaciones web,1
 ID_CATEGORY_cd_daw,50020125-IFC303-16831,DAW - Módulo profesional optativo,1
@@ -175,7 +175,7 @@ ID_CATEGORY_ca_lacc,50018829-QUI301-17889,LACC - IPE I - Itinerario personal par
 ID_CATEGORY_ca_lacc,50018829-QUI301-17887,LACC - Inglés profesional,1
 ID_CATEGORY_ca_lacc,50018829-QUI301-17881,LACC - Digitalización aplicada a los sectores productivos (GS),1
 ID_CATEGORY_ca_lacc,50018829-QUI301-122t,LACC - Coordinación - Tutoría,1
-ID_CATEGORY_le_ac,50010314-COM201-700t,AC - Coordinación  - Tutoría,1
+ID_CATEGORY_le_ac,50010314-COM201-700t,AC - Coordinación - Tutoría,1
 ID_CATEGORY_le_ac,50010314-COM201-15365,AC - Sostenibilidad aplicada al sistema productivo,1
 ID_CATEGORY_le_ac,50010314-COM201-15360,AC - Proyecto intermodular,1
 ID_CATEGORY_le_ac,50010314-COM201-15358,AC - Módulo profesional optativo,1
@@ -298,8 +298,8 @@ ID_CATEGORY_le_daw,50010314-IFC303-5090,DAW - Formación en centros de trabajo L
 ID_CATEGORY_le_daw,50010314-IFC303-5087,DAW - Proyecto de desarrollo de aplicaciones Web LOE,1
 ID_CATEGORY_le_daw,50010314-IFC303-5086,DAW - Diseño de interfaces Web,1
 ID_CATEGORY_le_daw,50010314-IFC303-5085,DAW - Despliegue de aplicaciones web,1
-ID_CATEGORY_le_daw,50010314-IFC303-5084,DAW - Desarrollo web  en entorno servidor,1
-ID_CATEGORY_le_daw,50010314-IFC303-5083,DAW - Desarrollo web  en entorno cliente,1
+ID_CATEGORY_le_daw,50010314-IFC303-5084,DAW - Desarrollo web en entorno servidor,1
+ID_CATEGORY_le_daw,50010314-IFC303-5083,DAW - Desarrollo web en entorno cliente,1
 ID_CATEGORY_le_daw,50010314-IFC303-16835,DAW - Sostenibilidad aplicada al sistema productivo,1
 ID_CATEGORY_le_daw,50010314-IFC303-16833,DAW - Proyecto intermodular de desarrollo de aplicaciones web,1
 ID_CATEGORY_le_daw,50010314-IFC303-16831,DAW - Módulo profesional optativo,1
@@ -466,7 +466,7 @@ ID_CATEGORY_rg_fp,50009567-SAN202-5329,FP - Operaciones básicas de laboratorio,
 ID_CATEGORY_rg_fp,50009567-SAN202-5327,FP - Dispensación de productos farmacéuticos,1
 ID_CATEGORY_rg_fp,50009567-SAN202-5326,FP - Oficina de Farmacia,1
 ID_CATEGORY_rg_fp,50009567-SAN202-5325,FP - Disposición y venta de productos,1
-ID_CATEGORY_rg_fp,50009567-SAN202-5324,FP - Anatomofisiología  y Patología básicas,1
+ID_CATEGORY_rg_fp,50009567-SAN202-5324,FP - Anatomofisiología y Patología básicas,1
 ID_CATEGORY_rg_fp,50009567-SAN202-5323,FP - Primeros auxilios,1
 ID_CATEGORY_rg_fp,50009567-SAN202-4975,FP - Formación en centros de trabajo LOE,1
 ID_CATEGORY_rg_fp,50009567-SAN202-4972,FP - Promoción de la salud,1
@@ -498,7 +498,7 @@ ID_CATEGORY_rg_es,50009567-SAN203-18042,ES - IPE II - Itinerario personal para l
 ID_CATEGORY_rg_es,50009567-SAN203-18034,ES - IPE I - Itinerario personal para la empleabilidad I,1
 ID_CATEGORY_rg_es,50009567-SAN203-18032,ES - Inglés profesional,1
 ID_CATEGORY_rg_es,50009567-SAN203-18025,ES - Digitalización aplicada a los sectores productivos (GM),1
-ID_CATEGORY_rg_sti,50009567-ELE304-97t,STI - Coordinación  - Tutoría,1
+ID_CATEGORY_rg_sti,50009567-ELE304-97t,STI - Coordinación - Tutoría,1
 ID_CATEGORY_rg_sti,50009567-ELE304-15786,STI - Sostenibilidad aplicada al sistema productivo,1
 ID_CATEGORY_rg_sti,50009567-ELE304-15778,STI - Proyecto intermodular de sistemas de telecomunicaciones e informáticos,1
 ID_CATEGORY_rg_sti,50009567-ELE304-15776,STI - Módulo profesional optativo,1
