@@ -44,15 +44,22 @@ get_or_create_user () {
 }
 
 # get_or_create_category <parent_id> <idnumber> <name>
+# El idnumber es único en todo el sitio: código de centro (50020125) para las categorías
+# de centro y centro-ciclo (50020125-IFC301) para las de ciclo, igual que las cohortes.
+# Se busca primero por idnumber y, si no, por padre y nombre (categorías creadas antes
+# de usar idnumber; upgrade/category_idnumbers.php les asigna el suyo).
 get_or_create_category () {
     local PARENT="$1"
     local IDNUMBER="$2"
     local NAME="$3"
     local ESCAPED_NAME=${NAME//\'/\'\'}
     local ID
-    ID=$(moosh -n sql-run "SELECT id FROM {course_categories} WHERE parent = ${PARENT} AND name = '${ESCAPED_NAME}'" | grep -oP '\d+' | tail -1)
+    ID=$(moosh -n sql-run "SELECT id FROM {course_categories} WHERE idnumber = '${IDNUMBER}'" | grep -oP '\d+' | tail -1)
     if [ -z "${ID}" ]; then
-        ID=$(moosh -n category-create -p "${PARENT}" -v 1 -d "${IDNUMBER}" "${NAME}" | grep -oP '\d+' | tail -1)
+        ID=$(moosh -n sql-run "SELECT id FROM {course_categories} WHERE parent = ${PARENT} AND name = '${ESCAPED_NAME}'" | grep -oP '\d+' | tail -1)
+    fi
+    if [ -z "${ID}" ]; then
+        ID=$(moosh -n category-create -p "${PARENT}" -v 1 -i "${IDNUMBER}" "${NAME}" | grep -oP '\d+' | tail -1)
     fi
     echo "${ID}"
 }
@@ -134,77 +141,77 @@ ID_CATEGORY_general=$(get_or_create_category 0 "general" "General")
 ID_CATEGORY_app=$(get_or_create_category 0 "app" "NO BORRAR - APP MOVIL")
 
 ID_CATEGORY_sg=$(get_or_create_category 0 "22002521" "IES SIERRA DE GUARA")
-ID_CATEGORY_sg_ga=$(get_or_create_category "${ID_CATEGORY_sg}" "ADG201" "Gestión Administrativa")
-ID_CATEGORY_sg_ceti=$(get_or_create_category "${ID_CATEGORY_sg}" "CESIFC01" "Ciberseguridad en Entornos de las Tecnologías de la Información")
+ID_CATEGORY_sg_ga=$(get_or_create_category "${ID_CATEGORY_sg}" "22002521-ADG201" "Gestión Administrativa")
+ID_CATEGORY_sg_ceti=$(get_or_create_category "${ID_CATEGORY_sg}" "22002521-CESIFC01" "Ciberseguridad en Entornos de las Tecnologías de la Información")
 
 ID_CATEGORY_se=$(get_or_create_category 0 "44003211" "IES SANTA EMERENCIANA")
-ID_CATEGORY_se_ga=$(get_or_create_category "${ID_CATEGORY_se}" "ADG201" "Gestión Administrativa")
+ID_CATEGORY_se_ga=$(get_or_create_category "${ID_CATEGORY_se}" "44003211-ADG201" "Gestión Administrativa")
 
 ID_CATEGORY_tm=$(get_or_create_category 0 "50010511" "IES TIEMPOS MODERNOS")
-ID_CATEGORY_tm_ga=$(get_or_create_category "${ID_CATEGORY_tm}" "ADG201" "Gestión Administrativa")
+ID_CATEGORY_tm_ga=$(get_or_create_category "${ID_CATEGORY_tm}" "50010511-ADG201" "Gestión Administrativa")
 
 ID_CATEGORY_le=$(get_or_create_category 0 "50010314" "CPIFP LOS ENLACES")
-ID_CATEGORY_le_smr=$(get_or_create_category "${ID_CATEGORY_le}" "IFC201" "Sistemas Microinformáticos y Redes")
-ID_CATEGORY_le_ac=$(get_or_create_category "${ID_CATEGORY_le}" "COM201" "Actividades Comerciales")
-ID_CATEGORY_le_ci=$(get_or_create_category "${ID_CATEGORY_le}" "COM301" "Comercio Internacional")
-ID_CATEGORY_le_gvec=$(get_or_create_category "${ID_CATEGORY_le}" "COM302" "Gestión de Ventas y Espacios Comerciales")
-ID_CATEGORY_le_tl=$(get_or_create_category "${ID_CATEGORY_le}" "COM303" "Transporte y Logística")
-ID_CATEGORY_le_daw=$(get_or_create_category "${ID_CATEGORY_le}" "IFC303" "Desarrollo de Aplicaciones WEB")
-ID_CATEGORY_le_pae=$(get_or_create_category "${ID_CATEGORY_le}" "IMS302" "Producción de Audiovisuales y Espectáculos")
+ID_CATEGORY_le_smr=$(get_or_create_category "${ID_CATEGORY_le}" "50010314-IFC201" "Sistemas Microinformáticos y Redes")
+ID_CATEGORY_le_ac=$(get_or_create_category "${ID_CATEGORY_le}" "50010314-COM201" "Actividades Comerciales")
+ID_CATEGORY_le_ci=$(get_or_create_category "${ID_CATEGORY_le}" "50010314-COM301" "Comercio Internacional")
+ID_CATEGORY_le_gvec=$(get_or_create_category "${ID_CATEGORY_le}" "50010314-COM302" "Gestión de Ventas y Espacios Comerciales")
+ID_CATEGORY_le_tl=$(get_or_create_category "${ID_CATEGORY_le}" "50010314-COM303" "Transporte y Logística")
+ID_CATEGORY_le_daw=$(get_or_create_category "${ID_CATEGORY_le}" "50010314-IFC303" "Desarrollo de Aplicaciones WEB")
+ID_CATEGORY_le_pae=$(get_or_create_category "${ID_CATEGORY_le}" "50010314-IMS302" "Producción de Audiovisuales y Espectáculos")
 
 ID_CATEGORY_ca=$(get_or_create_category 0 "50018829" "CPIFP CORONA DE ARAGÓN")
-ID_CATEGORY_ca_ad=$(get_or_create_category "${ID_CATEGORY_ca}" "ADG302" "Asistencia a la Dirección")
-ID_CATEGORY_ca_af=$(get_or_create_category "${ID_CATEGORY_ca}" "ADG301" "Administración y Finanzas")
-ID_CATEGORY_ca_lacc=$(get_or_create_category "${ID_CATEGORY_ca}" "QUI301" "Laboratorio de Análisis y de Control de Calidad")
+ID_CATEGORY_ca_ad=$(get_or_create_category "${ID_CATEGORY_ca}" "50018829-ADG302" "Asistencia a la Dirección")
+ID_CATEGORY_ca_af=$(get_or_create_category "${ID_CATEGORY_ca}" "50018829-ADG301" "Administración y Finanzas")
+ID_CATEGORY_ca_lacc=$(get_or_create_category "${ID_CATEGORY_ca}" "50018829-QUI301" "Laboratorio de Análisis y de Control de Calidad")
 
 ID_CATEGORY_pi=$(get_or_create_category 0 "22010712" "CPIFP PIRÁMIDE")
-ID_CATEGORY_pi_iea=$(get_or_create_category "${ID_CATEGORY_pi}" "ELE202" "Instalaciones Eléctricas y Automáticas")
+ID_CATEGORY_pi_iea=$(get_or_create_category "${ID_CATEGORY_pi}" "22010712-ELE202" "Instalaciones Eléctricas y Automáticas")
 
 ID_CATEGORY_sb=$(get_or_create_category 0 "44003028" "CPIFP SAN BLAS")
-ID_CATEGORY_sb_eca=$(get_or_create_category "${ID_CATEGORY_sb}" "SEA301" "Educación y Control Ambiental")
+ID_CATEGORY_sb_eca=$(get_or_create_category "${ID_CATEGORY_sb}" "44003028-SEA301" "Educación y Control Ambiental")
 
 ID_CATEGORY_mi=$(get_or_create_category 0 "50010156" "IES MIRALBUENO")
-ID_CATEGORY_mi_avge=$(get_or_create_category "${ID_CATEGORY_mi}" "HOT301" "Agencias de Viajes y Gestión de Eventos")
+ID_CATEGORY_mi_avge=$(get_or_create_category "${ID_CATEGORY_mi}" "50010156-HOT301" "Agencias de Viajes y Gestión de Eventos")
 
 ID_CATEGORY_ps=$(get_or_create_category 0 "50010144" "IES PABLO SERRANO")
-ID_CATEGORY_ps_asir=$(get_or_create_category "${ID_CATEGORY_ps}" "IFC301" "Administración de Sistemas Informáticos en Red")
+ID_CATEGORY_ps_asir=$(get_or_create_category "${ID_CATEGORY_ps}" "50010144-IFC301" "Administración de Sistemas Informáticos en Red")
 
 ID_CATEGORY_ba=$(get_or_create_category 0 "44010537" "CPIFP BAJO ARAGÓN")
-ID_CATEGORY_ba_dam=$(get_or_create_category "${ID_CATEGORY_ba}" "IFC301" "Desarrollo de Aplicaciones Multiplataforma")
+ID_CATEGORY_ba_dam=$(get_or_create_category "${ID_CATEGORY_ba}" "44010537-IFC302" "Desarrollo de Aplicaciones Multiplataforma")
 
 ID_CATEGORY_rg=$(get_or_create_category 0 "50009567" "IES RÍO GÁLLEGO")
-ID_CATEGORY_rg_sti=$(get_or_create_category "${ID_CATEGORY_rg}" "ELE304" "Sistemas de Telecomunicaciones e Informáticos")
-ID_CATEGORY_rg_fp=$(get_or_create_category "${ID_CATEGORY_rg}" "SAN202" "Farmacia y Parafarmacia")
-ID_CATEGORY_rg_es=$(get_or_create_category "${ID_CATEGORY_rg}" "SAN203" "Emergencias Sanitarias")
+ID_CATEGORY_rg_sti=$(get_or_create_category "${ID_CATEGORY_rg}" "50009567-ELE304" "Sistemas de Telecomunicaciones e Informáticos")
+ID_CATEGORY_rg_fp=$(get_or_create_category "${ID_CATEGORY_rg}" "50009567-SAN202" "Farmacia y Parafarmacia")
+ID_CATEGORY_rg_es=$(get_or_create_category "${ID_CATEGORY_rg}" "50009567-SAN203" "Emergencias Sanitarias")
 
 ID_CATEGORY_vt=$(get_or_create_category 0 "44003235" "IES VEGA DEL TURIA")
-ID_CATEGORY_vt_es=$(get_or_create_category "${ID_CATEGORY_vt}" "SAN203" "Emergencias Sanitarias")
+ID_CATEGORY_vt_es=$(get_or_create_category "${ID_CATEGORY_vt}" "44003235-SAN203" "Emergencias Sanitarias")
 
 ID_CATEGORY_lb=$(get_or_create_category 0 "50008460" "IES LUIS BUÑUEL")
-ID_CATEGORY_lb_apsd=$(get_or_create_category "${ID_CATEGORY_lb}" "SSC201" "Atención a Personas en situación de Dependencia")
+ID_CATEGORY_lb_apsd=$(get_or_create_category "${ID_CATEGORY_lb}" "50008460-SSC201" "Atención a Personas en situación de Dependencia")
 
 
 ID_CATEGORY_mv=$(get_or_create_category 0 "22004611" "IES MARTÍNEZ VARGAS")
-ID_CATEGORY_mv_ei=$(get_or_create_category "${ID_CATEGORY_mv}" "SSC302" "Educación Infantil (Formación Profesional)")
+ID_CATEGORY_mv_ei=$(get_or_create_category "${ID_CATEGORY_mv}" "22004611-SSC302" "Educación Infantil (Formación Profesional)")
 
 ID_CATEGORY_av=$(get_or_create_category 0 "50009348" "IES AVEMPACE")
-ID_CATEGORY_av_ei=$(get_or_create_category "${ID_CATEGORY_av}" "SSC302" "Educación Infantil (Formación Profesional)")
+ID_CATEGORY_av_ei=$(get_or_create_category "${ID_CATEGORY_av}" "50009348-SSC302" "Educación Infantil (Formación Profesional)")
 
 ID_CATEGORY_mm=$(get_or_create_category 0 "50008642" "IES MARÍA MOLINER")
-ID_CATEGORY_mm_is=$(get_or_create_category "${ID_CATEGORY_mm}" "SSC303" "Integración Social")
+ID_CATEGORY_mm_is=$(get_or_create_category "${ID_CATEGORY_mm}" "50008642-SSC303" "Integración Social")
 
 ID_CATEGORY_flc=$(get_or_create_category 0 "44004550" "IES FERNANDO LÁZARO CARRETER")
-ID_CATEGORY_flc_mi=$(get_or_create_category "${ID_CATEGORY_flc}" "IMA302" "Mecatrónica Industrial")
+ID_CATEGORY_flc_mi=$(get_or_create_category "${ID_CATEGORY_flc}" "44004550-IMA302" "Mecatrónica Industrial")
 
 ID_CATEGORY_cd=$(get_or_create_category 0 "50020125" "CFP CAMPUS DIGITAL")
-ID_CATEGORY_cd_smr=$(get_or_create_category "${ID_CATEGORY_cd}" "IFC201" "Sistemas Microinformáticos y Redes")
-ID_CATEGORY_cd_asir=$(get_or_create_category "${ID_CATEGORY_cd}" "IFC301" "Administración de Sistemas Informáticos en Red")
-ID_CATEGORY_cd_dam=$(get_or_create_category "${ID_CATEGORY_cd}" "IFC302" "Desarrollo de Aplicaciones Multiplataforma")
-ID_CATEGORY_cd_daw=$(get_or_create_category "${ID_CATEGORY_cd}" "IFC303" "Desarrollo de Aplicaciones WEB")
-ID_CATEGORY_cd_iabd=$(get_or_create_category "${ID_CATEGORY_cd}" "CESIFC02" "Inteligencia Artificial y Big Data")
-ID_CATEGORY_cd_ceti=$(get_or_create_category "${ID_CATEGORY_cd}" "CESIFC01" "Ciberseguridad en Entornos de las Tecnologías de la Información")
-ID_CATEGORY_cd_rsn=$(get_or_create_category "${ID_CATEGORY_cd}" "CESIFC04" "Recursos y Servicios en la Nube")
-ID_CATEGORY_cd_dalp=$(get_or_create_category "${ID_CATEGORY_cd}" "CESIFC05" "Desarrollo de Aplicaciones en Lenguaje Python")
+ID_CATEGORY_cd_smr=$(get_or_create_category "${ID_CATEGORY_cd}" "50020125-IFC201" "Sistemas Microinformáticos y Redes")
+ID_CATEGORY_cd_asir=$(get_or_create_category "${ID_CATEGORY_cd}" "50020125-IFC301" "Administración de Sistemas Informáticos en Red")
+ID_CATEGORY_cd_dam=$(get_or_create_category "${ID_CATEGORY_cd}" "50020125-IFC302" "Desarrollo de Aplicaciones Multiplataforma")
+ID_CATEGORY_cd_daw=$(get_or_create_category "${ID_CATEGORY_cd}" "50020125-IFC303" "Desarrollo de Aplicaciones WEB")
+ID_CATEGORY_cd_iabd=$(get_or_create_category "${ID_CATEGORY_cd}" "50020125-CESIFC02" "Inteligencia Artificial y Big Data")
+ID_CATEGORY_cd_ceti=$(get_or_create_category "${ID_CATEGORY_cd}" "50020125-CESIFC01" "Ciberseguridad en Entornos de las Tecnologías de la Información")
+ID_CATEGORY_cd_rsn=$(get_or_create_category "${ID_CATEGORY_cd}" "50020125-CESIFC04" "Recursos y Servicios en la Nube")
+ID_CATEGORY_cd_dalp=$(get_or_create_category "${ID_CATEGORY_cd}" "50020125-CESIFC05" "Desarrollo de Aplicaciones en Lenguaje Python")
 
 #############################################################################################
 # A los usuarios jefes de estudios les cambio su campo personalizado para que tengan el valor correspondiente a su categoría

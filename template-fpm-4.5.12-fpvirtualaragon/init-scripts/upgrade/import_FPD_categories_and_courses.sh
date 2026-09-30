@@ -31,3 +31,8 @@ do
 done
 
 echo >&2 "... checking cohort sync in tutoría courses. Done!"
+
+# idnumber de las categorías de centro y de ciclo (antes se guardaba el código en la descripción)
+echo >&2 "Setting idnumber in FPD categories..."
+php /init-scripts/upgrade/category_idnumbers.php
+echo >&2 "... setting idnumber in FPD categories. Done!"

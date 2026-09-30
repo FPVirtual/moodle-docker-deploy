@@ -121,7 +121,7 @@ ID_CATEGORY_ps=$(moosh category-create -p 0 -v 1 -d "50010144" "IES PABLO SERRAN
 ID_CATEGORY_ps_asir=$(moosh category-create -p "${ID_CATEGORY_ps}" -v 1 -d "IFC301" "Administración de Sistemas Informáticos en Red" | grep -o '[0-9]*' | tail -1)
 
 ID_CATEGORY_ba=$(moosh category-create -p 0 -v 1 -d "44010537" "CPIFP BAJO ARAGÓN" | grep -o '[0-9]*' | tail -1)
-ID_CATEGORY_ba_dam=$(moosh category-create -p "${ID_CATEGORY_ba}" -v 1 -d "IFC301" "Desarrollo de Aplicaciones Multiplataforma" | grep -o '[0-9]*' | tail -1)
+ID_CATEGORY_ba_dam=$(moosh category-create -p "${ID_CATEGORY_ba}" -v 1 -d "IFC302" "Desarrollo de Aplicaciones Multiplataforma" | grep -o '[0-9]*' | tail -1)
 
 ID_CATEGORY_rg=$(moosh category-create -p 0 -v 1 -d "50009567" "IES RÍO GÁLLEGO" | grep -o '[0-9]*' | tail -1)
 ID_CATEGORY_rg_sti=$(moosh category-create -p "${ID_CATEGORY_rg}" -v 1 -d "ELE304" "Sistemas de Telecomunicaciones e Informáticos" | grep -o '[0-9]*' | tail -1)
