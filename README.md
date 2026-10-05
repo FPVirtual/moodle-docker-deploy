@@ -174,3 +174,21 @@ No son ficheros, pero los parches anteriores dependen de ella. Se aplicó a mano
 - `editingteacher`: permitido `moodle/backup:backupactivity`, `moodle/restore:restoreactivity`, `moodle/backup:backuptargetimport`, `moodle/restore:restoretargetimport`; prohibido `moodle/backup:backupcourse`, `backupsection`, `configure`, `downloadfile`, `moodle/restore:restorecourse`, `restoresection`, `uploadfile`.
 - `teacher`: prohibido `moodle/backup:backupcourse`, `backupsection`, `backuptargetimport`, `downloadfile`, `moodle/restore:restorecourse`, `restoresection`, `restoretargetimport`, `uploadfile`.
 
+
+### Nombre corto del curso (profesorado)
+
+El nombre corto se usa en automatizaciones, así que el profesorado no debe poder cambiarlo. Estado de `moodle/course:changeshortname` para `editingteacher` en contexto de sistema:
+
+| Sitio | Permiso | Origen |
+|---|---|---|
+| `moodle.campusdigitalfp.com` | Prohibir (`-1000`) | A mano el 05/10/2026 (antes estaba en Permitir) |
+| `www.fpvirtualaragon.es`, `pre.fpvirtualaragon.es` | Prohibir (`-1000`) | Ya estaba así el 05/10/2026 |
+| Instalaciones nuevas FPD | Prohibir (`-1000`) | Automático: `init-scripts/new-install/moodle.sh` |
+
+La plantilla solo lo aplica en `new-install`; un `update` o `upgrade` no lo toca, así que en sitios existentes hay que ponerlo a mano:
+
+```bash
+moosh -n role-update-capability editingteacher moodle/course:changeshortname prohibit 1
+```
+
+Al ser Prohibir, quien sea gestor y además profesor de un curso tampoco puede cambiar el nombre corto en ese curso. `moodle/course:changefullname` sigue permitido para `editingteacher` en `moodle.campusdigitalfp.com`. El rol `teacher` tiene ambas capacidades prohibidas desde la plantilla.

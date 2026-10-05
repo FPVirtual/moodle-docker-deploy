@@ -336,6 +336,7 @@ if [[ "${SCHOOL_TYPE}" = "FPD" ]];
         # avoid changing short name, used for automations
         moosh role-update-capability teacher moodle/course:changeshortname prohibit 1
         moosh role-update-capability teacher moodle/course:changefullname prohibit 1
+        moosh role-update-capability editingteacher moodle/course:changeshortname prohibit 1
         # avoid access to repositories
         moosh role-update-capability teacher repository/contentbank:accessgeneralcontent prohibit 1
         # avoid manual unenrolments for teachers
