@@ -182,7 +182,7 @@ El nombre corto se usa en automatizaciones, así que el profesorado no debe pode
 | Sitio | Permiso | Origen |
 |---|---|---|
 | `moodle.campusdigitalfp.com` | Prohibir (`-1000`) | A mano el 05/10/2026 (antes estaba en Permitir) |
-| `www.fpvirtualaragon.es`, `pre.fpvirtualaragon.es` | Prohibir (`-1000`) | Ya estaba así el 05/10/2026 |
+| `www.fpvirtualaragon.es`, `pre.fpvirtualaragon.es`, `formacion.fpvirtualaragon.es` | Prohibir (`-1000`) | Ya estaba así el 05/10/2026 |
 | Instalaciones nuevas FPD | Prohibir (`-1000`) | Automático: `init-scripts/new-install/moodle.sh` |
 
 La plantilla solo lo aplica en `new-install`; un `update` o `upgrade` no lo toca, así que en sitios existentes hay que ponerlo a mano:
